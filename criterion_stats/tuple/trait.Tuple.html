@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Tuple` trait in crate `criterion_stats`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Tuple">
+
+    <title>criterion_stats::tuple::Tuple - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Trait Tuple</p><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Distributions">Distributions</a><a href="#associatedtype.Builder">Builder</a></div><a class="sidebar-title" href="#foreign-impls">Implementations on Foreign Types</a><div class="sidebar-links"><a href="#impl-Tuple">(A,)</a><a href="#impl-Tuple">(A, B)</a><a href="#impl-Tuple">(A, B, C)</a><a href="#impl-Tuple">(A, B, C, D)</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>criterion_stats</a>::<wbr><a href='index.html'>tuple</a></p><script>window.sidebarCurrent = {name: 'Tuple', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>criterion_stats</a>::<wbr><a href='index.html'>tuple</a>::<wbr><a class="trait" href=''>Tuple</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/criterion_stats/tuple.rs.html#6-12' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Tuple: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> {
+    type <a href='#associatedtype.Distributions' class="type">Distributions</a>: <a class="trait" href="../../criterion_stats/tuple/trait.TupledDistributions.html" title="trait criterion_stats::tuple::TupledDistributions">TupledDistributions</a>&lt;Item = Self&gt;;
+    type <a href='#associatedtype.Builder' class="type">Builder</a>: <a class="trait" href="../../criterion_stats/tuple/trait.TupledDistributionsBuilder.html" title="trait criterion_stats::tuple::TupledDistributionsBuilder">TupledDistributionsBuilder</a>&lt;Item = Self&gt;;
+}</pre><div class='docblock'><p>Any tuple: <code>(A, B, ..)</code></p>
+</div>
+            <h2 id='associated-types' class='small-section-header'>
+              Associated Types<a href='#associated-types' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='associatedtype.Distributions' class='method'><span id='Distributions.t' class='invisible'><code>type <a href='#associatedtype.Distributions' class="type">Distributions</a>: <a class="trait" href="../../criterion_stats/tuple/trait.TupledDistributions.html" title="trait criterion_stats::tuple::TupledDistributions">TupledDistributions</a>&lt;Item = Self&gt;</code></span></h3><div class='docblock'><p>A tuple of distributions associated with this tuple</p>
+</div><h3 id='associatedtype.Builder' class='method'><span id='Builder.t' class='invisible'><code>type <a href='#associatedtype.Builder' class="type">Builder</a>: <a class="trait" href="../../criterion_stats/tuple/trait.TupledDistributionsBuilder.html" title="trait criterion_stats::tuple::TupledDistributionsBuilder">TupledDistributionsBuilder</a>&lt;Item = Self&gt;</code></span></h3><div class='docblock'><p>A tuple of vectors associated with this tuple</p>
+</div></div>
+                <h2 id='foreign-impls' class='small-section-header'>
+                  Implementations on Foreign Types<a href='#foreign-impls' class='anchor'></a>
+                </h2>
+            <h3 id='impl-Tuple' class='impl'><span class='in-band'><code>impl&lt;A&gt; <a class="trait" href="../../criterion_stats/tuple/trait.Tuple.html" title="trait criterion_stats::tuple::Tuple">Tuple</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>A<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,&nbsp;</span></code><a href='#impl-Tuple' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_stats/tuple.rs.html#38-44' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='associatedtype.Distributions-1' class="type"><span id='Distributions.t-1' class='invisible'><code>type <a href='#associatedtype.Distributions' class="type">Distributions</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;A&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a></code></span></h4>
+<h4 id='associatedtype.Builder-1' class="type"><span id='Builder.t-1' class='invisible'><code>type <a href='#associatedtype.Builder' class="type">Builder</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;A&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">,)</a></code></span></h4>
+</div></span><h3 id='impl-Tuple-1' class='impl'><span class='in-band'><code>impl&lt;A, B&gt; <a class="trait" href="../../criterion_stats/tuple/trait.Tuple.html" title="trait criterion_stats::tuple::Tuple">Tuple</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>A, B<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,&nbsp;</span></code><a href='#impl-Tuple-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_stats/tuple.rs.html#75-82' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='associatedtype.Distributions-2' class="type"><span id='Distributions.t-2' class='invisible'><code>type <a href='#associatedtype.Distributions' class="type">Distributions</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;A&gt;, <a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;B&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<h4 id='associatedtype.Builder-2' class="type"><span id='Builder.t-2' class='invisible'><code>type <a href='#associatedtype.Builder' class="type">Builder</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;A&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;B&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+</div></span><h3 id='impl-Tuple-2' class='impl'><span class='in-band'><code>impl&lt;A, B, C&gt; <a class="trait" href="../../criterion_stats/tuple/trait.Tuple.html" title="trait criterion_stats::tuple::Tuple">Tuple</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>A, B, C<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;C: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,&nbsp;</span></code><a href='#impl-Tuple-2' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_stats/tuple.rs.html#120-128' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='associatedtype.Distributions-3' class="type"><span id='Distributions.t-3' class='invisible'><code>type <a href='#associatedtype.Distributions' class="type">Distributions</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;A&gt;, <a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;B&gt;, <a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;C&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<h4 id='associatedtype.Builder-3' class="type"><span id='Builder.t-3' class='invisible'><code>type <a href='#associatedtype.Builder' class="type">Builder</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;A&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;B&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;C&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+</div></span><h3 id='impl-Tuple-3' class='impl'><span class='in-band'><code>impl&lt;A, B, C, D&gt; <a class="trait" href="../../criterion_stats/tuple/trait.Tuple.html" title="trait criterion_stats::tuple::Tuple">Tuple</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>A, B, C, D<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;C: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;D: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,&nbsp;</span></code><a href='#impl-Tuple-3' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_stats/tuple.rs.html#175-189' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='associatedtype.Distributions-4' class="type"><span id='Distributions.t-4' class='invisible'><code>type <a href='#associatedtype.Distributions' class="type">Distributions</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;A&gt;, <a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;B&gt;, <a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;C&gt;, <a class="struct" href="../../criterion_stats/struct.Distribution.html" title="struct criterion_stats::Distribution">Distribution</a>&lt;D&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<h4 id='associatedtype.Builder-4' class="type"><span id='Builder.t-4' class='invisible'><code>type <a href='#associatedtype.Builder' class="type">Builder</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;A&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;B&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;C&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;D&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+</div></span>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    </ul><script type="text/javascript" async
+                         src="../../implementors/criterion_stats/tuple/trait.Tuple.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "criterion_stats";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

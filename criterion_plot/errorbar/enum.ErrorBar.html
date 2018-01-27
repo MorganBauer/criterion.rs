@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ErrorBar` enum in crate `criterion_plot`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ErrorBar">
+
+    <title>criterion_plot::errorbar::ErrorBar - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum ErrorBar</p><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.XErrorBars">XErrorBars</a><a href="#variant.XErrorLines">XErrorLines</a><a href="#variant.YErrorBars">YErrorBars</a><a href="#variant.YErrorLines">YErrorLines</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Plot%3CErrorBar%3CX%2C%20Y%2C%20L%2C%20H%3E%3E">Plot&lt;ErrorBar&lt;X, Y, L, H&gt;&gt;</a></div></div><p class='location'><a href='../index.html'>criterion_plot</a>::<wbr><a href='index.html'>errorbar</a></p><script>window.sidebarCurrent = {name: 'ErrorBar', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>criterion_plot</a>::<wbr><a href='index.html'>errorbar</a>::<wbr><a class="enum" href=''>ErrorBar</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/criterion_plot/errorbar.rs.html#156-201' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum ErrorBar&lt;X, Y, L, H&gt; {
+    XErrorBars {
+        x: X,
+        y: Y,
+        x_low: L,
+        x_high: H,
+    },
+    XErrorLines {
+        x: X,
+        y: Y,
+        x_low: L,
+        x_high: H,
+    },
+    YErrorBars {
+        x: X,
+        y: Y,
+        y_low: L,
+        y_high: H,
+    },
+    YErrorLines {
+        x: X,
+        y: Y,
+        y_low: L,
+        y_high: H,
+    },
+}</pre><div class='docblock'><p>Asymmetric error bar plots</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.XErrorBars" class="variant small-section-header"><a href="#variant.XErrorBars" class="anchor field"></a><span id='XErrorBars.v' class='invisible'><code>XErrorBars</code></span></span><div class='docblock'><p>Horizontal error bars</p>
+</div><span class='docblock autohide sub-variant' id='variant.XErrorBars.fields'><h3 class='fields'>Fields of <code>XErrorBars</code></h3>
+
+                           <table><tr><td id='variant.XErrorBars.field.x'><span id='XErrorBars.v.x.v' class='invisible'><code>x:&nbsp;X</code></span></td><td><div class='docblock'><p>X coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.XErrorBars.field.y'><span id='XErrorBars.v.y.v' class='invisible'><code>y:&nbsp;Y</code></span></td><td><div class='docblock'><p>Y coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.XErrorBars.field.x_low'><span id='XErrorBars.v.x_low.v' class='invisible'><code>x_low:&nbsp;L</code></span></td><td><div class='docblock'><p>X coordinate of the left end of the error bar</p>
+</div></td></tr><tr><td id='variant.XErrorBars.field.x_high'><span id='XErrorBars.v.x_high.v' class='invisible'><code>x_high:&nbsp;H</code></span></td><td><div class='docblock'><p>Y coordinate of the right end of the error bar</p>
+</div></td></tr></table></span><span id="variant.XErrorLines" class="variant small-section-header"><a href="#variant.XErrorLines" class="anchor field"></a><span id='XErrorLines.v' class='invisible'><code>XErrorLines</code></span></span><div class='docblock'><p>Horizontal error bars, where each point is joined by a line</p>
+</div><span class='docblock autohide sub-variant' id='variant.XErrorLines.fields'><h3 class='fields'>Fields of <code>XErrorLines</code></h3>
+
+                           <table><tr><td id='variant.XErrorLines.field.x'><span id='XErrorLines.v.x.v' class='invisible'><code>x:&nbsp;X</code></span></td><td><div class='docblock'><p>X coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.XErrorLines.field.y'><span id='XErrorLines.v.y.v' class='invisible'><code>y:&nbsp;Y</code></span></td><td><div class='docblock'><p>Y coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.XErrorLines.field.x_low'><span id='XErrorLines.v.x_low.v' class='invisible'><code>x_low:&nbsp;L</code></span></td><td><div class='docblock'><p>X coordinate of the left end of the error bar</p>
+</div></td></tr><tr><td id='variant.XErrorLines.field.x_high'><span id='XErrorLines.v.x_high.v' class='invisible'><code>x_high:&nbsp;H</code></span></td><td><div class='docblock'><p>Y coordinate of the right end of the error bar</p>
+</div></td></tr></table></span><span id="variant.YErrorBars" class="variant small-section-header"><a href="#variant.YErrorBars" class="anchor field"></a><span id='YErrorBars.v' class='invisible'><code>YErrorBars</code></span></span><div class='docblock'><p>Vertical error bars</p>
+</div><span class='docblock autohide sub-variant' id='variant.YErrorBars.fields'><h3 class='fields'>Fields of <code>YErrorBars</code></h3>
+
+                           <table><tr><td id='variant.YErrorBars.field.x'><span id='YErrorBars.v.x.v' class='invisible'><code>x:&nbsp;X</code></span></td><td><div class='docblock'><p>X coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.YErrorBars.field.y'><span id='YErrorBars.v.y.v' class='invisible'><code>y:&nbsp;Y</code></span></td><td><div class='docblock'><p>Y coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.YErrorBars.field.y_low'><span id='YErrorBars.v.y_low.v' class='invisible'><code>y_low:&nbsp;L</code></span></td><td><div class='docblock'><p>Y coordinate of the bottom of the error bar</p>
+</div></td></tr><tr><td id='variant.YErrorBars.field.y_high'><span id='YErrorBars.v.y_high.v' class='invisible'><code>y_high:&nbsp;H</code></span></td><td><div class='docblock'><p>Y coordinate of the top of the error bar</p>
+</div></td></tr></table></span><span id="variant.YErrorLines" class="variant small-section-header"><a href="#variant.YErrorLines" class="anchor field"></a><span id='YErrorLines.v' class='invisible'><code>YErrorLines</code></span></span><div class='docblock'><p>Vertical error bars, where each point is joined by a line</p>
+</div><span class='docblock autohide sub-variant' id='variant.YErrorLines.fields'><h3 class='fields'>Fields of <code>YErrorLines</code></h3>
+
+                           <table><tr><td id='variant.YErrorLines.field.x'><span id='YErrorLines.v.x.v' class='invisible'><code>x:&nbsp;X</code></span></td><td><div class='docblock'><p>X coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.YErrorLines.field.y'><span id='YErrorLines.v.y.v' class='invisible'><code>y:&nbsp;Y</code></span></td><td><div class='docblock'><p>Y coordinate of the data points</p>
+</div></td></tr><tr><td id='variant.YErrorLines.field.y_low'><span id='YErrorLines.v.y_low.v' class='invisible'><code>y_low:&nbsp;L</code></span></td><td><div class='docblock'><p>Y coordinate of the bottom of the error bar</p>
+</div></td></tr><tr><td id='variant.YErrorLines.field.y_high'><span id='YErrorLines.v.y_high.v' class='invisible'><code>y_high:&nbsp;H</code></span></td><td><div class='docblock'><p>Y coordinate of the top of the error bar</p>
+</div></td></tr></table></span>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Plot%3CErrorBar%3CX%2C%20Y%2C%20L%2C%20H%3E%3E' class='impl'><span class='in-band'><code>impl&lt;X, Y, L, H&gt; <a class="trait" href="../../criterion_plot/traits/trait.Plot.html" title="trait criterion_plot::traits::Plot">Plot</a>&lt;<a class="enum" href="../../criterion_plot/errorbar/enum.ErrorBar.html" title="enum criterion_plot::errorbar::ErrorBar">ErrorBar</a>&lt;X, Y, L, H&gt;&gt; for <a class="struct" href="../../criterion_plot/struct.Figure.html" title="struct criterion_plot::Figure">Figure</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;H: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;H::<a class="type" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item" title="type core::iter::traits::IntoIterator::Item">Item</a>: <a class="trait" href="../../criterion_plot/traits/trait.Data.html" title="trait criterion_plot::traits::Data">Data</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;L: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;L::<a class="type" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item" title="type core::iter::traits::IntoIterator::Item">Item</a>: <a class="trait" href="../../criterion_plot/traits/trait.Data.html" title="trait criterion_plot::traits::Data">Data</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;X: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;X::<a class="type" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item" title="type core::iter::traits::IntoIterator::Item">Item</a>: <a class="trait" href="../../criterion_plot/traits/trait.Data.html" title="trait criterion_plot::traits::Data">Data</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Y: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Y::<a class="type" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item" title="type core::iter::traits::IntoIterator::Item">Item</a>: <a class="trait" href="../../criterion_plot/traits/trait.Data.html" title="trait criterion_plot::traits::Data">Data</a>,&nbsp;</span></code><a href='#impl-Plot%3CErrorBar%3CX%2C%20Y%2C%20L%2C%20H%3E%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/errorbar.rs.html#214-267' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Properties' class="type"><span id='Properties.t' class='invisible'><code>type <a href='../../criterion_plot/traits/trait.Plot.html#associatedtype.Properties' class="type">Properties</a> = <a class="struct" href="../../criterion_plot/errorbar/struct.Properties.html" title="struct criterion_plot::errorbar::Properties">Properties</a></code></span></h4>
+<div class='docblock'><p>The properties associated to the plot</p>
+</div><h4 id='method.plot' class="method"><span id='plot.v' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Plot.html#tymethod.plot' class='fnname'>plot</a>&lt;F&gt;(&amp;mut self, e: <a class="enum" href="../../criterion_plot/errorbar/enum.ErrorBar.html" title="enum criterion_plot::errorbar::ErrorBar">ErrorBar</a>&lt;X, Y, L, H&gt;, configure: F) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/struct.Figure.html" title="struct criterion_plot::Figure">Figure</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(&amp;mut <a class="struct" href="../../criterion_plot/errorbar/struct.Properties.html" title="struct criterion_plot::errorbar::Properties">Properties</a>) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/errorbar/struct.Properties.html" title="struct criterion_plot::errorbar::Properties">Properties</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/errorbar.rs.html#227-266' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Plots some <code>data</code> with some <code>configuration</code></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "criterion_plot";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

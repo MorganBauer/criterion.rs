@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ParameterizedBenchmark` struct in crate `criterion`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ParameterizedBenchmark">
+
+    <title>criterion::ParameterizedBenchmark - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct ParameterizedBenchmark</p><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.sample_size">sample_size</a><a href="#method.warm_up_time">warm_up_time</a><a href="#method.measurement_time">measurement_time</a><a href="#method.nresamples">nresamples</a><a href="#method.noise_threshold">noise_threshold</a><a href="#method.confidence_level">confidence_level</a><a href="#method.significance_level">significance_level</a><a href="#method.new">new</a><a href="#method.new_external">new_external</a><a href="#method.with_function">with_function</a><a href="#method.with_program">with_program</a><a href="#method.throughput">throughput</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-BenchmarkDefinition">BenchmarkDefinition</a></div></div><p class='location'><a href='index.html'>criterion</a></p><script>window.sidebarCurrent = {name: 'ParameterizedBenchmark', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>criterion</a>::<wbr><a class="struct" href=''>ParameterizedBenchmark</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/criterion/benchmark.rs.html#69-74' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ParameterizedBenchmark&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>&gt; { /* fields omitted */ }</pre><div class='docblock'><p>Structure representing a benchmark (or group of benchmarks)
+which take one parameter.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + 'static,&nbsp;</span></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#380-550' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.sample_size' class="method"><span id='sample_size.v' class='invisible'><code>pub fn <a href='#method.sample_size' class='fnname'>sample_size</a>(self, n: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#102-107' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the size of the sample for this benchmark</p>
+
+<p>A bigger sample should yield more accurate results, if paired with a &quot;sufficiently&quot; large
+measurement time, on the other hand, it also increases the analysis time</p>
+
+<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
+<p>Panics if set to zero</p>
+</div><h4 id='method.warm_up_time' class="method"><span id='warm_up_time.v' class='invisible'><code>pub fn <a href='#method.warm_up_time' class='fnname'>warm_up_time</a>(self, dur: <a class="struct" href="https://doc.rust-lang.org/nightly/std/time/duration/struct.Duration.html" title="struct std::time::duration::Duration">Duration</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#114-119' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the warm up time for this benchmark</p>
+
+<h1 id='panics-1' class='section-header'><a href='#panics-1'>Panics</a></h1>
+<p>Panics if the input duration is zero</p>
+</div><h4 id='method.measurement_time' class="method"><span id='measurement_time.v' class='invisible'><code>pub fn <a href='#method.measurement_time' class='fnname'>measurement_time</a>(self, dur: <a class="struct" href="https://doc.rust-lang.org/nightly/std/time/duration/struct.Duration.html" title="struct std::time::duration::Duration">Duration</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#131-136' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the measurement time for this benchmark</p>
+
+<p>With a longer time, the measurement will become more resilient to transitory peak loads
+caused by external programs</p>
+
+<p><strong>Note</strong>: If the measurement time is too &quot;low&quot;, Criterion will automatically increase it</p>
+
+<h1 id='panics-2' class='section-header'><a href='#panics-2'>Panics</a></h1>
+<p>Panics if the input duration in zero</p>
+</div><h4 id='method.nresamples' class="method"><span id='nresamples.v' class='invisible'><code>pub fn <a href='#method.nresamples' class='fnname'>nresamples</a>(self, n: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#149-154' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the number of resamples for this benchmark</p>
+
+<p>Number of resamples to use for the
+<a href="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Case_resampling">bootstrap</a></p>
+
+<p>A larger number of resamples reduces the random sampling errors, which are inherent to the
+bootstrap method, but also increases the analysis time</p>
+
+<h1 id='panics-3' class='section-header'><a href='#panics-3'>Panics</a></h1>
+<p>Panics if the number of resamples is set to zero</p>
+</div><h4 id='method.noise_threshold' class="method"><span id='noise_threshold.v' class='invisible'><code>pub fn <a href='#method.noise_threshold' class='fnname'>noise_threshold</a>(self, threshold: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#166-171' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the noise threshold for this benchmark</p>
+
+<p>This threshold is used to decide if an increase of <code>X%</code> in the execution time is considered
+significant or should be flagged as noise</p>
+
+<p><em>Note:</em> A value of <code>0.02</code> is equivalent to <code>2%</code></p>
+
+<h1 id='panics-4' class='section-header'><a href='#panics-4'>Panics</a></h1>
+<p>Panics is the threshold is set to a negative value</p>
+</div><h4 id='method.confidence_level' class="method"><span id='confidence_level.v' class='invisible'><code>pub fn <a href='#method.confidence_level' class='fnname'>confidence_level</a>(self, cl: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#182-187' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the confidence level for this benchmark</p>
+
+<p>The confidence level is used to calculate the
+<a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence intervals</a> of the estimated
+statistics</p>
+
+<h1 id='panics-5' class='section-header'><a href='#panics-5'>Panics</a></h1>
+<p>Panics if the confidence level is set to a value outside the <code>(0, 1)</code> range</p>
+</div><h4 id='method.significance_level' class="method"><span id='significance_level.v' class='invisible'><code>pub fn <a href='#method.significance_level' class='fnname'>significance_level</a>(self, sl: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#198-203' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the <a href="https://en.wikipedia.org/wiki/Statistical_significance">significance level</a>
+for this benchmark</p>
+
+<p>The significance level is used for
+<a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">hypothesis testing</a></p>
+
+<h1 id='panics-6' class='section-header'><a href='#panics-6'>Panics</a></h1>
+<p>Panics if the significance level is set to a value outside the <code>(0, 1)</code> range</p>
+</div><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>&lt;S, F, I&gt;(id: S, f: F, parameters: I) -&gt; <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(&amp;mut <a class="struct" href="../criterion/struct.Bencher.html" title="struct criterion::Bencher">Bencher</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) + 'static,<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item = T&gt;,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#407-419' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Create a new parameterized benchmark group and adds the given function
+to it.
+The function under test must follow the setup - bench - teardown pattern:</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="self">self</span>::<span class="ident">criterion</span>::{<span class="ident">Bencher</span>, <span class="ident">Criterion</span>, <span class="ident">ParameterizedBenchmark</span>};
+
+<span class="kw">fn</span> <span class="ident">routine</span>(<span class="ident">b</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Bencher</span>, <span class="ident">parameter</span>: <span class="kw-2">&amp;</span><span class="ident">u64</span>) {
+    <span class="comment">// Setup (construct data, allocate memory, etc)</span>
+
+    <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">||</span> {
+        <span class="comment">// Code to benchmark goes here</span>
+    })
+
+    <span class="comment">// Teardown (free resources)</span>
+}
+
+<span class="kw">let</span> <span class="ident">parameters</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="ident">Criterion</span>::<span class="ident">default</span>()
+    .<span class="ident">bench</span>(<span class="string">&quot;routine&quot;</span>, <span class="ident">ParameterizedBenchmark</span>::<span class="ident">new</span>(<span class="string">&quot;routine&quot;</span>, <span class="ident">routine</span>, <span class="ident">parameters</span>));</pre>
+</div><h4 id='method.new_external' class="method"><span id='new_external.v' class='invisible'><code>pub fn <a href='#method.new_external' class='fnname'>new_external</a>&lt;S, F, I&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;id: S, <br>&nbsp;&nbsp;&nbsp;&nbsp;program: F, <br>&nbsp;&nbsp;&nbsp;&nbsp;parameters: I<br>) -&gt; <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/process/struct.Command.html" title="struct std::process::Command">Command</a> + 'static,<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item = T&gt;,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#463-475' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Create a new parameterized benchmark group and add the given program to it.
+The program under test must implement the following protocol:</p>
+
+<ul>
+<li>Read the number of iterations from stdin</li>
+<li>Execute the routine to benchmark that many times</li>
+<li>Print the elapsed time (in nanoseconds) to stdout</li>
+</ul>
+
+<p>You can pass the argument to the program  in any way you choose.</p>
+
+<pre class="rust rust-example-rendered">
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">stdin</span> <span class="op">=</span> <span class="ident">io</span>::<span class="ident">stdin</span>();
+    <span class="kw">let</span> <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">stdin</span> <span class="op">=</span> <span class="ident">stdin</span>.<span class="ident">lock</span>();
+
+    <span class="comment">// For each line in stdin</span>
+    <span class="kw">for</span> <span class="ident">line</span> <span class="kw">in</span> <span class="ident">stdin</span>.<span class="ident">lines</span>() {
+        <span class="comment">// Parse line as the number of iterations</span>
+        <span class="kw">let</span> <span class="ident">iters</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="ident">line</span>.<span class="ident">unwrap</span>().<span class="ident">trim</span>().<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+
+        <span class="comment">// Setup</span>
+
+        <span class="comment">// Benchmark</span>
+        <span class="kw">let</span> <span class="ident">start</span> <span class="op">=</span> <span class="ident">Instant</span>::<span class="ident">now</span>();
+        <span class="comment">// Execute the routine &quot;iters&quot; times</span>
+        <span class="kw">for</span> _ <span class="kw">in</span> <span class="number">0</span>..<span class="ident">iters</span> {
+            <span class="comment">// Code to benchmark goes here</span>
+        }
+        <span class="kw">let</span> <span class="ident">elapsed</span> <span class="op">=</span> <span class="ident">start</span>.<span class="ident">elapsed</span>();
+
+        <span class="comment">// Teardown</span>
+
+        <span class="comment">// Report elapsed time in nanoseconds to stdout</span>
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">elapsed</span>.<span class="ident">to_nanos</span>());
+    }
+}</pre>
+</div><h4 id='method.with_function' class="method"><span id='with_function.v' class='invisible'><code>pub fn <a href='#method.with_function' class='fnname'>with_function</a>&lt;S, F&gt;(self, id: S, f: F) -&gt; <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(&amp;mut <a class="struct" href="../criterion/struct.Bencher.html" title="struct criterion::Bencher">Bencher</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) + 'static,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#496-507' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Add a function to the benchmark group.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">ParameterizedBenchmark</span>::<span class="ident">new</span>(<span class="string">&quot;times 10&quot;</span>, <span class="op">|</span><span class="ident">b</span>, <span class="ident">i</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">||</span> <span class="ident">i</span> <span class="op">*</span> <span class="number">10</span>), <span class="macro">vec</span><span class="macro">!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
+    .<span class="ident">with_function</span>(<span class="string">&quot;times 20&quot;</span>, <span class="op">|</span><span class="ident">b</span>, <span class="ident">i</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">||</span> <span class="ident">i</span> <span class="op">*</span> <span class="number">20</span>));</pre>
+</div><h4 id='method.with_program' class="method"><span id='with_program.v' class='invisible'><code>pub fn <a href='#method.with_program' class='fnname'>with_program</a>&lt;S, F&gt;(self, id: S, program: F) -&gt; <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/process/struct.Command.html" title="struct std::process::Command">Command</a> + 'static,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#521-533' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Add an external program to the benchmark group.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">ParameterizedBenchmark</span>::<span class="ident">new</span>(<span class="string">&quot;internal&quot;</span>, <span class="op">|</span><span class="ident">b</span>, <span class="ident">i</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">||</span> <span class="ident">i</span> <span class="op">*</span> <span class="number">10</span>), <span class="macro">vec</span><span class="macro">!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
+    .<span class="ident">with_program</span>(<span class="string">&quot;external&quot;</span>, <span class="op">|</span><span class="ident">i</span><span class="op">|</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">command</span> <span class="op">=</span> <span class="ident">Command</span>::<span class="ident">new</span>(<span class="string">&quot;my_external_benchmark&quot;</span>);
+        <span class="ident">command</span>.<span class="ident">arg</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">i</span>));
+        <span class="ident">command</span>
+    });</pre>
+</div><h4 id='method.throughput' class="method"><span id='throughput.v' class='invisible'><code>pub fn <a href='#method.throughput' class='fnname'>throughput</a>&lt;F&gt;(self, throughput: F) -&gt; <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; <a class="enum" href="../criterion/enum.Throughput.html" title="enum criterion::Throughput">Throughput</a> + 'static,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#543-549' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Use the given function to calculate the input size for a given input.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">ParameterizedBenchmark</span>::<span class="ident">new</span>(<span class="string">&quot;strlen&quot;</span>, <span class="op">|</span><span class="ident">b</span>, <span class="ident">s</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">||</span> <span class="ident">s</span>.<span class="ident">len</span>()), <span class="macro">vec</span><span class="macro">!</span>[<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;lorem ipsum&quot;</span>])
+    .<span class="ident">throughput</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Throughput</span>::<span class="ident">Bytes</span>(<span class="ident">s</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u32</span>));</pre>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-BenchmarkDefinition' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../criterion/trait.BenchmarkDefinition.html" title="trait criterion::BenchmarkDefinition">BenchmarkDefinition</a> for <a class="struct" href="../criterion/struct.ParameterizedBenchmark.html" title="struct criterion::ParameterizedBenchmark">ParameterizedBenchmark</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + 'static,&nbsp;</span></code><a href='#impl-BenchmarkDefinition' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#551-599' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.run' class="method"><span id='run.v' class='invisible'><code>fn <a href='../criterion/trait.BenchmarkDefinition.html#tymethod.run' class='fnname'>run</a>(self, group_id: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, c: &amp;<a class="struct" href="../criterion/struct.Criterion.html" title="struct criterion::Criterion">Criterion</a>)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/criterion/benchmark.rs.html#555-598' title='goto source code'>[src]</a></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "criterion";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

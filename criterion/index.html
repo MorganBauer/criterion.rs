@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `criterion` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, criterion">
+
+    <title>criterion - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Crate criterion</p><div class="block items"><ul><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'criterion', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>criterion</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/criterion/lib.rs.html#1-934' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A statistics-driven micro-benchmarking library written in Rust.</p>
+
+<p>This crate is a microbenchmarking library which aims to provide strong
+statistical confidence in detecting and estimating the size of performance
+improvements and regressions, whle also being easy to use.</p>
+
+<p>See
+<a href="https://japaric.github.io/criterion.rs/book/index.html">the user guide</a>
+for examples as well as details on the measurement and analysis process,
+and the output.</p>
+
+<h2 id='features' class='section-header'><a href='#features'>Features:</a></h2>
+<ul>
+<li>Benchmark Rust code as well as external programs</li>
+<li>Collects detailed statistics, providing strong confidence that changes
+to performance are real, not measurement noise</li>
+<li>Produces detailed charts, providing thorough understanding of your code&#39;s
+performance behavior.</li>
+</ul>
+</div><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.criterion_group.html"
+                                  title='macro criterion::criterion_group'>criterion_group</a></td>
+                           <td class='docblock-short'>
+                                <p>Macro used to define a benchmark group for the benchmark harness; see the
+criterion! macro for more details.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.criterion_main.html"
+                                  title='macro criterion::criterion_main'>criterion_main</a></td>
+                           <td class='docblock-short'>
+                                <p>Macro which expands to a benchmark harness.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Bencher.html"
+                                  title='struct criterion::Bencher'>Bencher</a></td>
+                           <td class='docblock-short'>
+                                <p>Helper struct to time routines</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Benchmark.html"
+                                  title='struct criterion::Benchmark'>Benchmark</a></td>
+                           <td class='docblock-short'>
+                                <p>Structure representing a benchmark (or group of benchmarks)
+which takes no parameters.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Criterion.html"
+                                  title='struct criterion::Criterion'>Criterion</a></td>
+                           <td class='docblock-short'>
+                                <p>The benchmark manager</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Fun.html"
+                                  title='struct criterion::Fun'>Fun</a></td>
+                           <td class='docblock-short'>
+                                <p>Representing a function to benchmark together with a name of that function.
+Used together with <code>bench_functions</code> to represent one out of multiple functions
+under benchmark.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ParameterizedBenchmark.html"
+                                  title='struct criterion::ParameterizedBenchmark'>ParameterizedBenchmark</a></td>
+                           <td class='docblock-short'>
+                                <p>Structure representing a benchmark (or group of benchmarks)
+which take one parameter.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Throughput.html"
+                                  title='enum criterion::Throughput'>Throughput</a></td>
+                           <td class='docblock-short'>
+                                <p>Enum representing different ways of measuring the throughput of benchmarked code.
+If the throughput setting is configured for a benchmark then the estimated throughput will
+be reported as well as the time per iteration.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.BenchmarkDefinition.html"
+                                  title='trait criterion::BenchmarkDefinition'>BenchmarkDefinition</a></td>
+                           <td class='docblock-short'>
+                                <p>Common trait for <code>Benchmark</code> and <code>ParameterizedBenchmark</code>. Not inteded to be
+used outside of Criterion.rs.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.black_box.html"
+                                  title='fn criterion::black_box'>black_box</a></td>
+                           <td class='docblock-short'>
+                                <p>A function that is opaque to the optimizer, used to prevent the compiler from
+optimizing away computations in a benchmark.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.init_logging.html"
+                                  title='fn criterion::init_logging'>init_logging</a></td>
+                           <td class='docblock-short'>
+                                <p>Initialize the logging for a Criterion benchmark. This should be called
+first before executing Criterion benchmarks, unless the user provides their
+own logging infrastructure.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "criterion";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

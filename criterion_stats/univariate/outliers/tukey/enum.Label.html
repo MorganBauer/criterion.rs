@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Label` enum in crate `criterion_stats`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Label">
+
+    <title>criterion_stats::univariate::outliers::tukey::Label - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum Label</p><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.HighMild">HighMild</a><a href="#variant.HighSevere">HighSevere</a><a href="#variant.LowMild">LowMild</a><a href="#variant.LowSevere">LowSevere</a><a href="#variant.NotAnOutlier">NotAnOutlier</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.is_high">is_high</a><a href="#method.is_mild">is_mild</a><a href="#method.is_low">is_low</a><a href="#method.is_outlier">is_outlier</a><a href="#method.is_severe">is_severe</a></div></div><p class='location'><a href='../../../index.html'>criterion_stats</a>::<wbr><a href='../../index.html'>univariate</a>::<wbr><a href='../index.html'>outliers</a>::<wbr><a href='index.html'>tukey</a></p><script>window.sidebarCurrent = {name: 'Label', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../../../index.html'>criterion_stats</a>::<wbr><a href='../../index.html'>univariate</a>::<wbr><a href='../index.html'>outliers</a>::<wbr><a href='index.html'>tukey</a>::<wbr><a class="enum" href=''>Label</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#213-224' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Label {
+    HighMild,
+    HighSevere,
+    LowMild,
+    LowSevere,
+    NotAnOutlier,
+}</pre><div class='docblock'><p>Labels used to classify outliers</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.HighMild" class="variant small-section-header"><a href="#variant.HighMild" class="anchor field"></a><span id='HighMild.v' class='invisible'><code>HighMild</code></span></span><div class='docblock'><p>A &quot;mild&quot; outlier in the &quot;high&quot; spectrum</p>
+</div><span id="variant.HighSevere" class="variant small-section-header"><a href="#variant.HighSevere" class="anchor field"></a><span id='HighSevere.v' class='invisible'><code>HighSevere</code></span></span><div class='docblock'><p>A &quot;severe&quot; outlier in the &quot;high&quot; spectrum</p>
+</div><span id="variant.LowMild" class="variant small-section-header"><a href="#variant.LowMild" class="anchor field"></a><span id='LowMild.v' class='invisible'><code>LowMild</code></span></span><div class='docblock'><p>A &quot;mild&quot; outlier in the &quot;low&quot; spectrum</p>
+</div><span id="variant.LowSevere" class="variant small-section-header"><a href="#variant.LowSevere" class="anchor field"></a><span id='LowSevere.v' class='invisible'><code>LowSevere</code></span></span><div class='docblock'><p>A &quot;severe&quot; outlier in the &quot;low&quot; spectrum</p>
+</div><span id="variant.NotAnOutlier" class="variant small-section-header"><a href="#variant.NotAnOutlier" class="anchor field"></a><span id='NotAnOutlier.v' class='invisible'><code>NotAnOutlier</code></span></span><div class='docblock'><p>A normal data point</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="enum" href="../../../../criterion_stats/univariate/outliers/tukey/enum.Label.html" title="enum criterion_stats::univariate::outliers::tukey::Label">Label</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#226-266' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.is_high' class="method"><span id='is_high.v' class='invisible'><code>pub fn <a href='#method.is_high' class='fnname'>is_high</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#228-233' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Checks if the data point has an &quot;unusually&quot; high value</p>
+</div><h4 id='method.is_mild' class="method"><span id='is_mild.v' class='invisible'><code>pub fn <a href='#method.is_mild' class='fnname'>is_mild</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#236-241' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Checks if the data point is labeled as a &quot;mild&quot; outlier</p>
+</div><h4 id='method.is_low' class="method"><span id='is_low.v' class='invisible'><code>pub fn <a href='#method.is_low' class='fnname'>is_low</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#244-249' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Checks if the data point has an &quot;unusually&quot; low value</p>
+</div><h4 id='method.is_outlier' class="method"><span id='is_outlier.v' class='invisible'><code>pub fn <a href='#method.is_outlier' class='fnname'>is_outlier</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#252-257' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Checks if the data point is labeled as an outlier</p>
+</div><h4 id='method.is_severe' class="method"><span id='is_severe.v' class='invisible'><code>pub fn <a href='#method.is_severe' class='fnname'>is_severe</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/criterion_stats/univariate/outliers/tukey.rs.html#260-265' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Checks if the data point is labeled as a &quot;severe&quot; outlier</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "criterion_stats";
+    </script>
+    <script src="../../../../main.js"></script>
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>

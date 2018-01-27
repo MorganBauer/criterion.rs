@@ -1,0 +1,825 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Criterion.rs Documentation</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="User Guide and Other Prose Documentation For Criterion.rs">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme;
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            document.querySelector('html').classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="criterion_rs.html"><strong aria-hidden="true">1.</strong> Criterion.rs</a></li><li><ol class="section"><li><a href="getting_started.html"><strong aria-hidden="true">1.1.</strong> Getting Started</a></li></ol></li><li><a href="user_guide/user_guide.html"><strong aria-hidden="true">2.</strong> User Guide</a></li><li><ol class="section"><li><a href="user_guide/migrating_from_libtest.html"><strong aria-hidden="true">2.1.</strong> Migrating from libtest</a></li><li><a href="user_guide/command_line.html"><strong aria-hidden="true">2.2.</strong> Command-Line Output</a></li><li><a href="user_guide/plots_and_graphs.html"><strong aria-hidden="true">2.3.</strong> Plots &amp; Graphs</a></li><li><a href="user_guide/benchmarking_with_inputs.html"><strong aria-hidden="true">2.4.</strong> Benchmarking With Inputs</a></li><li><a href="user_guide/comparing_functions.html"><strong aria-hidden="true">2.5.</strong> Comparing Functions</a></li><li><a href="user_guide/external_programs.html"><strong aria-hidden="true">2.6.</strong> Benchmarking External Programs</a></li></ol></li><li><a href="analysis.html"><strong aria-hidden="true">3.</strong> Analysis Process</a></li><li><a href="faq.html"><strong aria-hidden="true">4.</strong> Frequently Asked Questions</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="submenu">
+                                <li><button class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li><button class="theme" id="rust">Rust</button></li>
+                                <li><button class="theme" id="coal">Coal</button></li>
+                                <li><button class="theme" id="navy">Navy</button></li>
+                                <li><button class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                        </div>
+
+                        <h1 class="menu-title">Criterion.rs Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="print.html#criterionrs" id="criterionrs"><h1>Criterion.rs</h1></a>
+<p>Criterion.rs is a statistics-driven micro-benchmarking tool. It is a Rust port of <a href="https://hackage.haskell.org/package/criterion">Haskell's Criterion</a> library.</p>
+<p>Criterion.rs benchmarks collect and store statistical information from run to run and can automatically detect performance regressions as well as measuring optimizations.</p>
+<p>Criterion.rs is free and open source. You can find the source on <a href="https://github.com/japaric/criterion.rs">GitHub</a>. Issues and feature requests can be posted on <a href="https://github.com/japaric/criterion.rs/issues">the issue tracker</a>.</p>
+<a class="header" href="print.html#api-docs" id="api-docs"><h2>API Docs</h2></a>
+<p>In addition to this book, you may also wish to read <a href="http://japaric.github.io/criterion.rs/criterion/">the API documentation</a>.</p>
+<a class="header" href="print.html#license" id="license"><h2>License</h2></a>
+<p>Criterion.rs is dual-licensed under the <a href="https://github.com/japaric/criterion.rs/blob/master/LICENSE-APACHE">Apache 2.0</a> and the <a href="https://github.com/japaric/criterion.rs/blob/master/LICENSE-MIT">MIT</a> licenses.</p>
+<a class="header" href="print.html#debug-output" id="debug-output"><h2>Debug Output</h2></a>
+<p>To enable debug output in Criterion.rs, define the environment variable <code>CRITERION_DEBUG</code>. For example (in bash):</p>
+<pre><code class="language-bash">CRITERION_DEBUG=1 cargo bench
+</code></pre>
+<p>This will enable extra debug output. Criterion.rs will also save the gnuplot scripts alongside the generated plot files. When raising issues with Criterion.rs (especially when reporting issues with the plot generation) please run your benchmarks with this option enabled and provide the additional output and relevant gnuplot scripts.</p>
+<a class="header" href="print.html#getting-started" id="getting-started"><h1>Getting Started</h1></a>
+<a class="header" href="print.html#step-1---add-dependency-to-cargotoml" id="step-1---add-dependency-to-cargotoml"><h3>Step 1 - Add Dependency to cargo.toml</h3></a>
+<p>To enable Criterion.rs benchmarks, add the following to your <code>cargo.toml</code> file:</p>
+<pre><code class="language-toml">[dev-dependencies]
+criterion = &quot;0.1.2&quot;
+
+[[bench]]
+name = &quot;my_benchmark&quot;
+harness = false
+</code></pre>
+<p>This adds a development dependency on Criterion.rs, and declares a benchmark called <code>my_benchmark</code> without the standard benchmarking harness. It's important to disable the standard benchmark harness, because we'll later add our own and we don't want them to conflict.</p>
+<a class="header" href="print.html#step-2---add-benchmark" id="step-2---add-benchmark"><h3>Step 2 - Add Benchmark</h3></a>
+<p>As an example, we'll benchmark an implementation of the Fibonacci function. Create a benchmark file at <code>$PROJECT/benches/my_benchmark.rs</code> with the following contents (see the Details section below for an explanation of this code):</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro_use]
+extern crate criterion;
+
+use criterion::Criterion;
+
+fn fibonacci(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci(n-1) + fibonacci(n-2),
+    }
+}
+
+fn criterion_benchmark(c: &amp;mut Criterion) {
+    c.bench_function(&quot;fib 20&quot;, |b| b.iter(|| fibonacci(20)));
+}
+
+criterion_group!(benches, criterion_benchmark);
+criterion_main!(benches);
+#}</code></pre></pre>
+<a class="header" href="print.html#step-3---run-benchmark" id="step-3---run-benchmark"><h3>Step 3 - Run Benchmark</h3></a>
+<p>To run this benchmark, use the following command:</p>
+<p><code>cargo bench</code></p>
+<p>You should see output similar to this:</p>
+<pre><code>     Running target/release/deps/example-423eedc43b2b3a93
+Benchmarking fib 20
+Benchmarking fib 20: Warming up for 3.0000 s
+Benchmarking fib 20: Collecting 100 samples in estimated 5.0658 s (188100 iterations)
+Benchmarking fib 20: Analyzing
+fib 20                  time:   [26.029 us 26.251 us 26.505 us]
+Found 11 outliers among 99 measurements (11.11%)
+  6 (6.06%) high mild
+  5 (5.05%) high severe
+slope  [26.029 us 26.505 us] R^2            [0.8745662 0.8728027]
+mean   [26.106 us 26.561 us] std. dev.      [808.98 ns 1.4722 us]
+median [25.733 us 25.988 us] med. abs. dev. [234.09 ns 544.07 ns]
+</code></pre>
+<a class="header" href="print.html#details" id="details"><h3>Details</h3></a>
+<p>Let's go back and walk through that benchmark code in more detail.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro use]
+extern crate criterion;
+
+use criterion::Criterion;
+#}</code></pre></pre>
+<p>First, we declare the criterion crate and import the <a href="http://japaric.github.io/criterion.rs/criterion/struct.Criterion.html">Criterion type</a>. Criterion is the main type for the Criterion.rs library. It provides methods to configure and define groups of benchmarks.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn fibonacci(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci(n-1) + fibonacci(n-2),
+    }
+}
+#}</code></pre></pre>
+<p>Second, we define the function to benchmark. In normal usage, this would be imported from elsewhere in your crate, but for simplicity we'll just define it right here.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn criterion_benchmark(c: &amp;mut Criterion) {
+#}</code></pre></pre>
+<p>Here we create a function to contain our benchmark code. The name of the benchmark function doesn't matter, but it should be clear and understandable.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    c.bench_function(&quot;fib 20&quot;, |b| b.iter(|| fibonacci(20)));
+}
+#}</code></pre></pre>
+<p>This is where the real work happens. The <code>bench_function</code> method defines a benchmark with a name and a closure. The name should be unique among all of the benchmarks for your project. The closure must accept one argument, a <a href="http://japaric.github.io/criterion.rs/criterion/struct.Bencher.html">Bencher</a>. The bencher performs the benchmark - in this case, it simply calls our <code>fibonacci</code> function in a loop. There are a number of other benchmark functions, including the option to benchmark with arguments, to benchmark external programs and to compare the performance of two functions. See the API documentation for details on all of the different benchmarking options.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+criterion_group!(benches, criterion_benchmark);
+criterion_main!(benches);
+#}</code></pre></pre>
+<p>Here we invoke the <code>criterion_group!</code> <a href="http://japaric.github.io/criterion.rs/criterion/macro.criterion_group.html">(link)</a> macro to generate a benchmark group called benches, containing the <code>criterion_benchmark</code> function defined earlier. Finally, we invoke the <code>criterion_main!</code> <a href="http://japaric.github.io/criterion.rs/criterion/macro.criterion_main.html">(link)</a> macro to generate a main function which executes the <code>benches</code> group. See the API documentation for more information on these macros.</p>
+<a class="header" href="print.html#step-4---optimize" id="step-4---optimize"><h3>Step 4 - Optimize</h3></a>
+<p>This fibonacci function is quite inefficient. We can do better:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn fibonacci(n: u64) -&gt; u64 {
+    let mut a = 0u64;
+    let mut b = 1u64;
+    let mut c = 0u64;
+
+    if n == 0 {
+        return 0
+    }
+
+    for _ in 0..(n+1) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+#}</code></pre></pre>
+<p>Running the benchmark now produces output like this:</p>
+<pre><code>     Running target/release/deps/example-423eedc43b2b3a93
+Benchmarking fib 20
+Benchmarking fib 20: Warming up for 3.0000 s
+Benchmarking fib 20: Collecting 100 samples in estimated 5.0000 s (13548862800 iterations)
+Benchmarking fib 20: Analyzing
+fib 20                  time:   [353.59 ps 356.19 ps 359.07 ps]
+                        change: [-99.999% -99.999% -99.999%] (p = 0.00 &lt; 0.05)
+                        Performance has improved.
+Found 6 outliers among 99 measurements (6.06%)
+  4 (4.04%) high mild
+  2 (2.02%) high severe
+slope  [353.59 ps 359.07 ps] R^2            [0.8734356 0.8722124]
+mean   [356.57 ps 362.74 ps] std. dev.      [10.672 ps 20.419 ps]
+median [351.57 ps 355.85 ps] med. abs. dev. [4.6479 ps 10.059 ps]
+</code></pre>
+<p>As you can see, Criterion is statistically confident that our optimization has made an improvement. If we introduce a performance regression, Criterion will instead print a message indicating this.</p>
+<a class="header" href="print.html#known-limitations" id="known-limitations"><h3>Known Limitations</h3></a>
+<p>There are currently a number of limitations to the use of Criterion.rs relative to the standard benchmark harness.</p>
+<p>First, it is necessary for Criterion.rs to provide its own <code>main</code> function using the <code>criterion_main</code> macro. This means that it's not currently possible to include benchmarks in the <code>src/</code> directory.</p>
+<p>Second, Criterion.rs provides a stable-compatible replacement for the <code>black_box</code> function provided by the standard test crate. This replacement is not as reliable as the official one, and it may allow dead-code-elimination to affect the benchmarks in some circumstances. If you're using a Nightly build of Rust, you can add the <code>real_blackbox</code> feature to your dependency on Criterion.rs to use the standard <code>black_box</code> function instead.</p>
+<p>Example:</p>
+<pre><code class="language-toml">criterion = { version = '...', features=['real_blackbox'] }
+</code></pre>
+<a class="header" href="print.html#user-guide" id="user-guide"><h1>User Guide</h1></a>
+<p>This chapter covers the output produced by Criterion.rs benchmarks, both the command-line reports and the charts. It also details more advanced usages of Criterion.rs such as benchmarking external programs and comparing the performance of multiple functions.</p>
+<a class="header" href="print.html#migrating-from-libtest" id="migrating-from-libtest"><h1>Migrating from libtest</h1></a>
+<p>This page shows an example of converting a libtest or bencher benchmark to use
+Criterion.rs.</p>
+<a class="header" href="print.html#the-benchmark" id="the-benchmark"><h2>The Benchmark</h2></a>
+<p>We'll start with this benchmark as an example:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#![feature(test)]
+#fn main() {
+extern crate test;
+use test::Bencher;
+
+fn fibonacci(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci(n-1) + fibonacci(n-2),
+    }
+}
+
+#[bench]
+fn bench_fib(b: &amp;mut Bencher) {
+    b.iter(|| fibonacci(20));
+}
+#}</code></pre></pre>
+<a class="header" href="print.html#the-migration" id="the-migration"><h2>The Migration</h2></a>
+<p>The first thing to do is update the <code>Cargo.toml</code> to disable the libtest
+benchmark harness:</p>
+<pre><code class="language-toml">[[bench]]
+name = &quot;example&quot;
+harness = false
+</code></pre>
+<p>We also need to add Criterion.rs to the <code>dev-dependencies</code> section of <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[dev-dependencies]
+criterion = &quot;0.1.2&quot;
+</code></pre>
+<p>The next step is to update the imports:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro_use]
+extern crate criterion;
+use criterion::Criterion;
+#}</code></pre></pre>
+<p>Then, we can change the <code>bench_fib</code> function. Remove the <code>#[bench]</code> and change
+the argument to <code>&amp;mut Criterion</code> instead. The contents of this function need to
+change as well:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn bench_fib(c: &amp;mut Criterion) {
+    c.bench_function(&quot;fib 20&quot;, |b| b.iter(|| fibonacci(20)));
+}
+#}</code></pre></pre>
+<p>Finally, we need to invoke some macros to generate a main function, since we
+no longer have libtest to provide one:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+criterion_group!(benches, bench_fib);
+criterion_main!(benches);
+#}</code></pre></pre>
+<p>And that's it! The complete migrated benchmark code is below:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro_use]
+extern crate criterion;
+use criterion::Criterion;
+
+fn fibonacci(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci(n-1) + fibonacci(n-2),
+    }
+}
+
+fn bench_fib(c: &amp;mut Criterion) {
+    c.bench_function(&quot;fib 20&quot;, |b| b.iter(|| fibonacci(20)));
+}
+
+criterion_group!(benches, bench_fib);
+criterion_main!(benches);
+#}</code></pre></pre>
+<a class="header" href="print.html#command-line-output" id="command-line-output"><h1>Command-Line Output</h1></a>
+<p>The output for this page was produced by running <code>cargo bench -- --verbose</code>.
+<code>cargo bench</code> omits some of this information.</p>
+<p>Every Criterion.rs benchmark calculates statistics from the measured iterations and produces a report like this:</p>
+<pre><code>Benchmarking alloc
+Benchmarking alloc: Warming up for 1.0000 s
+Benchmarking alloc: Collecting 100 samples in estimated 13.354 s (5050 iterations)
+Benchmarking alloc: Analyzing
+alloc                   time:   [2.5094 ms 2.5306 ms 2.5553 ms]
+                        thrpt:  [391.34 MiB/s 395.17 MiB/s 398.51 MiB/s]
+                        change: [-38.292% -37.342% -36.524%] (p = 0.00 &lt; 0.05)
+                        Performance has improved.
+Found 8 outliers among 100 measurements (8.00%)
+  4 (4.00%) high mild
+  4 (4.00%) high severe
+slope  [2.5094 ms 2.5553 ms] R^2            [0.8660614 0.8640630]
+mean   [2.5142 ms 2.5557 ms] std. dev.      [62.868 us 149.50 us]
+median [2.5023 ms 2.5262 ms] med. abs. dev. [40.034 us 73.259 us]
+</code></pre>
+<a class="header" href="print.html#warmup" id="warmup"><h2>Warmup</h2></a>
+<p>Every Criterion.rs benchmark iterates the benchmarked function automatically for a configurable warmup period (by default, for three seconds). For Rust function benchmarks, this is to warm up the processor caches and (if applicable) file system caches. For external program benchmarks, it can also be used to warm up JIT compilers.</p>
+<a class="header" href="print.html#collecting-samples" id="collecting-samples"><h2>Collecting Samples</h2></a>
+<p>Criterion iterates the function to be benchmarked with a varying number of iterations to generate an estimate of the time taken by each iteration. The number of samples is configurable. It also prints an estimate of the time the sampling process will take based on the time per iteration during the warmup period.</p>
+<a class="header" href="print.html#time" id="time"><h2>Time</h2></a>
+<pre><code>time:   [2.5094 ms 2.5306 ms 2.5553 ms]
+thrpt:  [391.34 MiB/s 395.17 MiB/s 398.51 MiB/s]
+</code></pre>
+<p>This shows a confidence interval over the measured per-iteration time for this benchmark. The left and right values show the lower and upper bounds of the confidence interval respectively, while the center value shows Criterion.rs' best estimate of the time taken for each iteration of the benchmarked routine.</p>
+<p>The confidence level is configurable. A greater confidence level (eg. 99%) will widen the interval and thus provide the user with less information about the true slope. On the other hand, a lesser confidence interval (eg. 90%) will narrow the interval but then the user is less confident that the interval contains the true slope. 95% is generally a good balance.</p>
+<p>Criterion.rs performs <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrap resampling</a> to generate these confidence intervals. The number of bootstrap samples is configurable, and defaults to 100,000.</p>
+<p>Optionally, Criterion.rs can also report the throughput of the benchmarked code in units of bytes or elements per second.</p>
+<a class="header" href="print.html#change" id="change"><h2>Change</h2></a>
+<p>When a Criterion.rs benchmark is run, it saves statistical information in the <code>target/criterion</code> directory. Subsequent executions of the benchmark will load this data and compare it with the current sample to show the effects of changes in the code.</p>
+<pre><code>change: [-38.292% -37.342% -36.524%] (p = 0.00 &lt; 0.05)
+Performance has improved.
+</code></pre>
+<p>This shows a confidence interval over the difference between this run of the benchmark and the last one, as well as the probability that the measured difference could have occurred by chance. These lines will be omitted if no saved data could be read for this benchmark.</p>
+<p>The second line shows a quick summary. This line will indicate that the performance has improved or regressed if Criterion.rs has strong statistical evidence that this is the case. It may also indicate that the change was within the noise threshold. Criterion.rs attempts to reduce the effects of noise as much as possible, but differences in benchmark environment (eg. different load from other processes, memory usage, etc.) can influence the results. For highly-deterministic benchmarks, Criterion.rs can be sensitive enough to detect these small fluctuations, so benchmark results that overlap the range <code>+-noise_threshold</code> are assumed to be noise and considered insignificant. The noise threshold is configurable, and defaults to <code>+-2%</code>.</p>
+<p>Additional examples:</p>
+<pre><code>alloc                   time:   [1.2421 ms 1.2540 ms 1.2667 ms]
+                        change: [+40.772% +43.934% +47.801%] (p = 0.00 &lt; 0.05)
+                        Performance has regressed.
+</code></pre>
+<pre><code>alloc                   time:   [1.2508 ms 1.2630 ms 1.2756 ms]
+                        change: [-1.8316% +0.9121% +3.4704%] (p = 0.52 &gt; 0.05)
+                        No change in performance detected.
+</code></pre>
+<pre><code>benchmark               time:   [442.92 ps 453.66 ps 464.78 ps]
+                        change: [-0.7479% +3.2888% +7.5451%] (p = 0.04 &gt; 0.05)
+                        Change within noise threshold.
+</code></pre>
+<a class="header" href="print.html#detecting-outliers" id="detecting-outliers"><h2>Detecting Outliers</h2></a>
+<pre><code>Found 8 outliers among 100 measurements (8.00%)
+  4 (4.00%) high mild
+  4 (4.00%) high severe
+</code></pre>
+<p>Criterion.rs attempts to detect unusually high or low samples and reports them as outliers. A large number of outliers suggests that the benchmark results are noisy and should be viewed with appropriate skepticism. In this case, you can see that there are some samples which took much longer than normal. This might be caused by unpredictable load on the computer running the benchmarks, thread or process scheduling, or irregularities in the time taken by the code being benchmarked.</p>
+<p>In order to ensure reliable results, benchmarks should be run on a quiet computer and should be designed to do approximately the same amount of work for each iteration. If this is not possible, consider increasing the measurement time to reduce the influence of outliers on the results at the cost of longer benchmarking period. Alternately, the warmup period can be extended (to ensure that any JIT compilers or similar are warmed up) or other iteration loops can be used to perform setup before each benchmark to prevent that from affecting the results.</p>
+<a class="header" href="print.html#additional-statistics" id="additional-statistics"><h2>Additional Statistics</h2></a>
+<pre><code>slope  [2.5094 ms 2.5553 ms] R^2            [0.8660614 0.8640630]
+mean   [2.5142 ms 2.5557 ms] std. dev.      [62.868 us 149.50 us]
+median [2.5023 ms 2.5262 ms] med. abs. dev. [40.034 us 73.259 us]
+</code></pre>
+<p>This shows additional confidence intervals based on other statistics.</p>
+<p>Criterion.rs performs a linear regression to calculate the time per iteration. The first line shows the confidence interval of the slopes from the linear regressions, while the R^2 area shows the goodness-of-fit values for the lower and upper bounds of that confidence interval. If the R^2 value is low, this may indicate the benchmark isn't doing the same amount of work on each iteration. You may wish to examine the plot output and consider improving the consistency of your benchmark routine.</p>
+<p>The second line shows confidence intervals on the mean and standard deviation of the per-iteration times (calculated naively). If std. dev. is large compared to the time values from above, the benchmarks are noisy. You may need to change your benchmark to reduce the noise.</p>
+<p>The median/med. abs. dev. line is similar to the mean/std. dev. line, except that it uses the median and <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a>. As with the std. dev., if the med. abs. dev. is large, this indicates the benchmarks are noisy.</p>
+<a class="header" href="print.html#a-note-of-caution" id="a-note-of-caution"><h2>A Note Of Caution</h2></a>
+<p>Criterion.rs is designed to produce robust statistics when possible, but it can't account for everything. For example, the performance improvements and regressions listed in the above examples were created just by switching my laptop between battery power and wall power rather than changing the code under test. Care must be taken to ensure that benchmarks are performed under similar conditions in order to produce meaningful results.</p>
+<a class="header" href="print.html#command-line-options" id="command-line-options"><h1>Command Line Options</h1></a>
+<p>This is a list of the most common options. Run <code>cargo bench -- -h</code> to see a
+full list.</p>
+<ul>
+<li>To filter benchmarks, use &quot;cargo bench -- $FILTER&quot; where $FILTER is a
+substring of the benchmark ID. For example, running <code>cargo bench -- fib_20</code>
+would only run benchmarks whose ID contains the string <code>fib_20</code></li>
+<li>To print more detailed output, use <code>cargo bench -- --verbose</code></li>
+<li>To disable colored output, use <code>cargo bench -- --color never</code></li>
+</ul>
+<a class="header" href="print.html#plots--graphs" id="plots--graphs"><h1>Plots &amp; Graphs</h1></a>
+<p>If <a href="http://www.gnuplot.info/">gnuplot</a> is installed, Criterion.rs can generate a number of useful charts and graphs which you can check to get a better understanding of the behavior of the benchmark.</p>
+<a class="header" href="print.html#file-structure" id="file-structure"><h2>File Structure</h2></a>
+<p>The plots and saved data are stored under <code>target/criterion/$BENCHMARK_NAME/</code>. Here's an example of the folder structure:</p>
+<pre><code>$BENCHMARK/
+├── base/
+│  ├── estimates.json
+│  ├── MAD.svg
+│  ├── mean.svg
+│  ├── median.svg
+│  ├── pdf.svg
+│  ├── regression.svg
+│  ├── sample.json
+│  ├── SD.svg
+│  ├── slope.svg
+│  └── tukey.json
+├── both/
+│  ├── pdf.svg
+│  └── regression.svg
+├── change/
+│  ├── estimates.json
+│  ├── mean.svg
+│  ├── median.svg
+│  └── t-test.svg
+└── new/
+   ├── estimates.json
+   ├── MAD.svg
+   ├── mean.svg
+   ├── median.svg
+   ├── pdf.svg
+   ├── regression.svg
+   ├── sample.json
+   ├── SD.svg
+   ├── slope.svg
+   └── tukey.json
+</code></pre>
+<p>The <code>new</code> folder contains the statistics and plots for the last benchmarking run, while the <code>base</code> folder contains those for the previous run. Criterion.rs only keeps historical data for two runs. The <code>both</code> folder contains plots which show both runs on one plot, while the <code>change</code> folder contains plots showing the differences between the two runs. This example shows the plots produced by the default <code>bench_function</code> benchmark method. Other methods may produce additional charts, which will be detailed in their respective pages.</p>
+<a class="header" href="print.html#madmeanmediansdslope" id="madmeanmediansdslope"><h2>MAD/Mean/Median/SD/Slope</h2></a>
+<p><img src="./user_guide/mean.svg" alt="Mean Chart" /></p>
+<p>These are the simplest of the plots generated by Criterion.rs. They display the bootstrapped distributions and confidence intervals for the given statistics.</p>
+<a class="header" href="print.html#regression" id="regression"><h2>Regression</h2></a>
+<p><img src="./user_guide/regression.svg" alt="Regression Chart" /></p>
+<p>The regression plot shows each data point plotted on an X-Y plane showing the number of iterations vs the time taken. It also shows the line representing Criterion.rs' best guess at the time per iteration. A good benchmark will show the data points all closely following the line. If the data points are scattered widely, this indicates that there is a lot of noise in the data and that the benchmark may not be reliable. If the data points follow a consistent trend but don't match the line (eg. if they follow a curved pattern or show several discrete line segments) this indicates that the benchmark is doing different amounts of work depending on the number of iterations, which prevents Criterion.rs from generating accurate statistics and means that the benchmark may need to be reworked.</p>
+<p>The combined regression plot in the <code>both</code> folder shows only the regression lines and is a useful visual indicator of the difference in performance between the two runs.</p>
+<a class="header" href="print.html#pdf" id="pdf"><h2>PDF</h2></a>
+<p><img src="./user_guide/pdf.svg" alt="PDF Chart" /></p>
+<p>The PDF chart shows the probability distribution function for the samples. It also shows the ranges used to classify samples as outliers. In this example (as in the regression example above) we can see that the performance trend changes noticeably below ~35 iterations, which we may wish to investigate.</p>
+<a class="header" href="print.html#benchmarking-with-inputs" id="benchmarking-with-inputs"><h1>Benchmarking With Inputs</h1></a>
+<p>Criterion.rs can run benchmarks with multiple different input values to investigate how the performance behavior changes with different inputs.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    static KB: usize = 1024;
+
+    Criterion::default()
+    .bench_function_over_inputs(&quot;from_elem&quot;, |b, &amp;&amp;size| {
+        b.iter(|| iter::repeat(0u8).take(size).collect::&lt;Vec&lt;_&gt;&gt;());
+    }, &amp;[KB, 2 * KB, 4 * KB, 8 * KB, 16 * KB])
+#}</code></pre></pre>
+<p>In this example, we're benchmarking the time it takes to collect a iterator producing a sequence of N bytes into a Vec. We use the <code>bench_function_over_inputs</code> method. Unlike <code>bench_function</code>, the lambda here takes a Bencher and a reference to a parameter, in this case <code>size</code>. Finally, we provide a slice of potential input values. This generates five benchmarks, named &quot;from_elem/1024&quot; through &quot;from_elem/16384&quot; which individually behave the same as any other benchmark. Criterion.rs also generates some charts in <code>target/criterion/$BENCHMARK/summary/</code> showing how the iteration time changes as a function of the input.</p>
+<p><img src="./user_guide/means.svg" alt="Means Chart" /></p>
+<p>Here we can see that there is a approximately-linear relationship between the length of an iterator and the time taken to collect it into a Vec.</p>
+<a class="header" href="print.html#comparing-functions" id="comparing-functions"><h1>Comparing Functions</h1></a>
+<p>Criterion.rs can automatically benchmark multiple implementations of a function and produce summary graphs to show the differences in performance between them. First, lets create a comparison benchmark.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn fibonacci_slow(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci_slow(n-1) + fibonacci_slow(n-2),
+    }
+}
+
+fn fibonacci_fast(n: u64) -&gt; u64 {
+    let mut a = 0u64;
+    let mut b = 1u64;
+    let mut c = 0u64;
+
+    if n == 0 {
+        return 0
+    }
+
+    for _ in 0..(n+1) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+#}</code></pre></pre>
+<p>These are the same two fibonacci functions from the <a href="./getting_started.html">Getting Started</a> page. The difference here is that we import the <a href="http://japaric.github.io/criterion.rs/criterion/struct.Fun.html">Fun type</a> as well.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn fibonaccis(c: &amp;mut Criterion) {
+    let fib_slow = Fun::new(&quot;Recursive&quot;, |b, i| b.iter(|| fibonacci_slow(*i)));
+    let fib_fast = Fun::new(&quot;Iterative&quot;, |b, i| b.iter(|| fibonacci_fast(*i)));
+#}</code></pre></pre>
+<p>Here, we create two benchmark functions which simply call our two Fibonacci implementations. Notice that the closure takes two arguments - b is the Bencher as in other examples, and i is the input parameter to be given to the benchmarked function.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    let functions = vec!(fib_slow, fib_fast);
+    
+    c.bench_functions(&quot;Fibonacci&quot;, functions, &amp;20);
+}
+#}</code></pre></pre>
+<p>Finally, we construct a Vec of the benchmark functions and run the benchmark. This performs two benchmarks (&quot;Fibonacci/Recursive&quot; and &quot;Fibonacci/Iterative&quot;) which individually behave the same as other benchmarks seen earlier. In addition to the usual set of plots generated for each individual benchmark, this will generate a set of summary plots at <code>.criterion/$BENCHMARK/Summary</code> highlighting the differences between the functions.</p>
+<a class="header" href="print.html#meansmediansslopes" id="meansmediansslopes"><h2>Means/Medians/Slopes</h2></a>
+<p><img src="./user_guide/means_compare.svg" alt="Means Chart" /></p>
+<p>These charts show the absolute and relative differences in the appropriate statistics between the implementations. Here we can see that the recursive implementation took 40 microseconds per iteration, which is 1665 times slower than the iterative implementation.</p>
+<a class="header" href="print.html#violin-plot" id="violin-plot"><h2>Violin Plot</h2></a>
+<p><img src="./user_guide/violin_plot.svg" alt="Violin Plot" /></p>
+<p>The <a href="https://en.wikipedia.org/wiki/Violin_plot">Violin Plot</a> shows the median times and the PDF of each implementation.</p>
+<a class="header" href="print.html#benchmarking-external-programs" id="benchmarking-external-programs"><h1>Benchmarking External Programs</h1></a>
+<p>Criterion.rs has the ability to benchmark external programs (which may be written in any language) the same way that it can benchmark rust functions. What follows is an example of how that can be done and some of the pitfalls to avoid along the way.</p>
+<p>First, let's define our recursive Fibonacci function, only in Python this time:</p>
+<pre><code class="language-python">def fibonacci(n):
+    if n == 0 or n == 1:
+        return 1
+    return fibonacci(n-1) + fibonacci(n-2)
+</code></pre>
+<p>In order to benchmark this with Criterion.rs, we first need to write our own small benchmarking harness. I'll start with the complete code for this and then go over it in more detail:</p>
+<pre><code class="language-python">import time
+import sys
+
+MILLIS = 1000
+MICROS = MILLIS * 1000
+NANOS = MICROS * 1000
+
+def benchmark():
+    argument = int(sys.argv[1])
+
+    for line in sys.stdin:
+        iters = int(line.strip())
+
+        # Setup
+
+        start = time.perf_counter()
+        for x in range(iters):
+            fibonacci(argument)
+        end = time.perf_counter()
+
+        # Teardown
+
+        delta = end - start
+        nanos = int(delta * NANOS)
+        print(&quot;%d&quot; % nanos)
+        sys.stdout.flush()
+
+benchmark()
+</code></pre>
+<p>The important part is the <code>benchmark()</code> function.</p>
+<a class="header" href="print.html#the-argument" id="the-argument"><h3>The Argument</h3></a>
+<pre><code class="language-python">argument = int(sys.argv[1])
+</code></pre>
+<p>This example uses the <code>Criterion::bench_program_over_inputs</code> function to benchmark our Python Fibonacci function with a variety of inputs. The external program recieves the input value as a command-line argument appended to the command specified in the benchmark, so the very first thing our benchmark harness does is parse that argument into an integer. If we used <code>bench_program</code> instead, there would be no argument.</p>
+<a class="header" href="print.html#reading-from-stdin" id="reading-from-stdin"><h3>Reading from stdin</h3></a>
+<pre><code class="language-python">    for line in sys.stdin:
+        iters = int(line.strip())
+</code></pre>
+<p>Next, our harness reads a line from stdin and parses it into an integer. Starting an external process is slow, and it would mess with our measurements if we had to do so for each iteration of the benchmark. Besides which, it would obscure the results (since we're probably more interested in the performance of the function without the process-creation overhead). Therefore, Criterion.rs starts the process once per input value or benchmark and sends the iteration counts to the external program on stdin. Your external benchmark harness must read and parse this iteration count and call the benchmarked function the appropriate number of times.</p>
+<a class="header" href="print.html#setup" id="setup"><h3>Setup</h3></a>
+<p>If your benchmarked code requires any setup, this is the time to do that.</p>
+<a class="header" href="print.html#timing" id="timing"><h3>Timing</h3></a>
+<pre><code class="language-python">        start = time.perf_counter()
+        for x in range(iters):
+            fibonacci(argument)
+        end = time.perf_counter()
+</code></pre>
+<p>This is the heart of the external benchmark harness. We measure how long it takes to execute our Fibonacci function with the given argument in a loop, iterating the given number of times. It's important here to use the most precise timer available. We'll need to report the measurement in nanoseconds later, so if you can use a timer that returns a value in nanoseconds (eg. Java's <code>System.nanoTime()</code>) we can skip a bit of work later. It's OK if the timer can't measure to nanosecond precision (most PC's can't) but use the best timer you have.</p>
+<a class="header" href="print.html#teardown" id="teardown"><h3>Teardown</h3></a>
+<p>If your benchmarked code requires any teardown, this is the time to do that.</p>
+<a class="header" href="print.html#reporting" id="reporting"><h3>Reporting</h3></a>
+<pre><code class="language-python">        delta = end - start
+        nanos = int(delta * NANOS)
+        print(&quot;%d&quot; % nanos)
+        sys.stdout.flush()
+</code></pre>
+<p>To report the measured time, simply print the elapsed number of nanoseconds to stdout. <code>perf_counter</code> reports its results as a floating-point number of seconds, so we first convert it to an integer number of nanoseconds before printing it.</p>
+<p><strong>Beware Buffering:</strong> Criterion.rs will wait until it recieves the measurement before sending the next iteration count. If your benchmarks seem to be hanging during the warmup period, it may be because your benchmark harness is buffering the output on stdout, as Python does here. In this example we explicitly force Python to flush the buffer; you may need to do the same in your benchmarks.</p>
+<a class="header" href="print.html#defining-the-benchmark" id="defining-the-benchmark"><h2>Defining the Benchmark</h2></a>
+<p>If you've read the earlier pages, this will be quite familiar.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+use criterion::Criterion;
+use std::process::Command;
+
+fn create_command() -&gt; Command {
+    let mut command = Command::new(&quot;python3&quot;);
+    command.arg(&quot;benches/external_process.py&quot;);
+    command
+}
+
+fn python_fibonacci(c: &amp;mut Criterion) {
+    c.bench_program_over_inputs(&quot;fibonacci-python&quot;,
+        create_command,
+        &amp;[1, 2, 4, 8, 16]);
+}
+#}</code></pre></pre>
+<p>As before, we create a <code>Criterion</code> struct and use it to define our benchmark. This time, we use the <code>bench_program_over_inputs</code> method. This takes a function (used to create the <code>Command</code> which represents our external program) and an iterable containing the inputs to test. Aside from the use of a <code>Command</code> rather than a closure, this behaves just like (and produces the same output as) <code>bench_function_over_inputs</code>.</p>
+<p>If your benchmark doesn't require input, simply omit the input values and use <code>bench_program</code> instead, which behaves like <code>bench_function</code>.</p>
+<a class="header" href="print.html#analysis-process" id="analysis-process"><h1>Analysis Process</h1></a>
+<p>This page details the data collection and analysis process used by Criterion.rs. This is a bit more advanced than the user guide; it is assumed the reader is somewhat familiar with statistical concepts. In particular, the reader should know what bootstrap sampling means.</p>
+<p>So, without further ado, let's start with a general overview. Each benchmark in Criterion.rs goes through four phases:</p>
+<ul>
+<li>Warmup - The routine is executed repeatedly to fill the CPU and OS caches and (if applicable) give the JIT time to compile the code</li>
+<li>Measurement - The routine is executed repeatedly and the execution times are recorded</li>
+<li>Analysis - The recorded samples are analyzed and distilled into meaningful statistics, which are then reported to the user</li>
+<li>Comparison - The performance of the current run is compared to the stored data from the last run to determine whether it has changed, and if so by how much</li>
+</ul>
+<a class="header" href="print.html#warmup-1" id="warmup-1"><h2>Warmup</h2></a>
+<p>The first step in the process is warmup. In this phase, the routine is executed repeatedly to give the OS, CPU and JIT time to adapt to the new workload. This helps prevent things like cold caches and JIT compilation time from throwing off the measurements later. The warmup period is controlled by the <code>warm_up_time</code> value in the Criterion struct.</p>
+<p>The warmup period is quite simple. The routine is executed once, then twice, four times and so on until the total accumulated execution time is greater than the configured warm up time. The number of iterations that were completed during this period is recorded, along with the elapsed time.</p>
+<a class="header" href="print.html#measurement" id="measurement"><h2>Measurement</h2></a>
+<p>The measurement phase is when Criterion.rs collects the performance data that will be analyzed and used in later stages. This phase is mainly controlled by the <code>measurement_time</code> value in the Criterion struct.</p>
+<p>The measurements are done in a number of samples (see the <code>sample_size</code> parameter). Each sample consists of one or more (typically many) iterations of the routine. The elapsed time between the beginning and the end of the iterations, divided by the number of iterations, gives an estimate of the time taken by each iteration.</p>
+<p>As measurement progresses, the sample iteration counts are increased. Suppose that the first sample contains 10 iterations. The second sample will contain 20, the third will contain 30 and so on. More formally, the iteration counts are calculated like so:</p>
+<p><code>iterations = [d, 2d, 3d, ... Nd]</code></p>
+<p>Where <code>N</code> is the total number of samples and <code>d</code> is a factor, calculated from the rough estimate of iteration time measured during the warmup period, which is used to scale the number of iterations to meet the configured measurement time. Note that <code>d</code> cannot be less than 1, and therefore the actual measurment time may exceed the configured measurement time if the iteration time is large or the configured measurement time is small.</p>
+<p>Note that Criterion.rs does not measure each individual iteration, only the complete sample. The resulting samples are stored for use in later stages. The sample data is also written to the local disk so that it can be used in the comparison phase of future benchmark runs.</p>
+<a class="header" href="print.html#analysis" id="analysis"><h2>Analysis</h2></a>
+<p>During this phase Criterion.rs calculates useful statistics from the samples collected during the measurement phase.</p>
+<a class="header" href="print.html#outlier-classification" id="outlier-classification"><h3>Outlier Classification</h3></a>
+<p>The first step in analysis is outlier classification. Each sample is classified using a modified version of Tukey's Method, which will be summarized here. First, the interquartile range (IQR) is calculated from the difference between the 25th and 75th percentile. In Tukey's Method, values less than (25th percentile - 1.5 * IQR) or greater than (75th percentile + 1.5 * IQR) are considered outliers. Criterion.rs creates additional fences at (25pct - 3 * IQR) and (75pct + 3 * IQR); values outside that range are considered severe outliers.</p>
+<p>Outlier classification is important because the analysis method used to estimate the average iteration time is sensitive to outliers. Thus, when Criterion.rs detects outliers, a warning is printed to inform the user that the benchmark may be less reliable. Additionally, a plot is generated showing which data points are considered outliers, where the fences are, etc.</p>
+<p>Note, however, that outlier samples are <em>not</em> dropped from the data, and are used in the following analysis steps along with all other samples.</p>
+<a class="header" href="print.html#linear-regression" id="linear-regression"><h3>Linear Regression</h3></a>
+<p>The samples collected from a good benchmark should form a rough line when plotted on a chart showing the number of iterations and the time for each sample. The slope of that line gives an estimate of the time per iteration. A single estimate is difficult to interpret, however, since it contains no context. A confidence interval is generally more helpful. In order to generate a confidence interval, a large number of bootstrap samples are generated from the measured samples. A line is fitted to each of the bootstrap samples, and the result is a statistical distribution of slopes that gives a reliable confidence interval around the single estimate calculated from the measured samples.</p>
+<p>This resampling process is repeated to generate the mean, standard deviation, median and median absolute deviation of the measured iteration times as well. All of this information is printed to the user and charts are generated. Finally, if there are saved statistics from a previous run, the two benchmark runs are compared.</p>
+<a class="header" href="print.html#comparison" id="comparison"><h2>Comparison</h2></a>
+<p>In the comparison phase, the statistics calculated from the current benchmark run are compared against those saved by the previous run to determine if the performance has changed in the meantime, and if so, by how much.</p>
+<p>Once again, Criterion.rs generates many bootstrap samples, based on the measured samples from the two runs. The new and old bootstrap samples are compared and their T score is calculated using a T-test. The fraction of the bootstrapped T scores which are more extreme than the T score calculated by comparing the two measured samples gives the probability that the observed difference between the two sets of samples is merely by chance. Thus, if that probability is very low or zero, Criterion.rs can be confident that there is truly a difference in execution time between the two samples. In that case, the mean and median differences are bootstrapped and printed for the user, and the entire process begins again with the next benchmark.</p>
+<p>This process can be extremely sensitive to changes, especially when combined with a small, highly deterministic benchmark routine. In these circumstances even very small changes (eg. differences in the load from background processes) can change the measurements enough that the comparison process detects an optimization or regression. Since these sorts of unpredictable fluctuations are rarely of interest while benchmarking, there is also a configurable noise threshold. Optimizations or regressions within (for example) +-1% are considered noise and ignored. It is best to benchmark on a quiet computer where possible to minimize this noise, but it is not always possible to eliminate it entirely.</p>
+<a class="header" href="print.html#frequently-asked-questions" id="frequently-asked-questions"><h2>Frequently Asked Questions</h2></a>
+<a class="header" href="print.html#how-should-i-run-criterionrs-benchmarks-in-a-ci-pipeline" id="how-should-i-run-criterionrs-benchmarks-in-a-ci-pipeline"><h3>How Should I Run Criterion.rs Benchmarks In A CI Pipeline?</h3></a>
+<p>Criterion.rs benchmarks can be run as part of a CI pipeline just as they
+normally would on the command line - simply run <code>cargo bench</code>.</p>
+<p>To compare the master branch to a pull request, you could run the benchmarks on
+the master branch to set a baseline, then run them again with the pull request
+branch. An example script for Travis-CI might be:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+if [ &quot;${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}&quot; != &quot;master&quot; ] &amp;&amp; [ &quot;$TRAVIS_RUST_VERSION&quot; == &quot;nightly&quot; ]; then
+    REMOTE_URL=&quot;$(git config --get remote.origin.url)&quot;;
+    cd ${TRAVIS_BUILD_DIR}/.. &amp;&amp; \
+    git clone ${REMOTE_URL} &quot;${TRAVIS_REPO_SLUG}-bench&quot; &amp;&amp; \
+    cd  &quot;${TRAVIS_REPO_SLUG}-bench&quot; &amp;&amp; \
+    # Bench master
+    git checkout master &amp;&amp; \
+    cargo bench &amp;&amp; \
+    # Bench pull request
+    git checkout ${TRAVIS_COMMIT} &amp;&amp; \
+    cargo bench;
+fi
+</code></pre>
+<p>(Thanks to <a href="https://beachape.com/blog/2016/11/02/rust-performance-testing-on-travis-ci/">BeachApe</a> for the script on which this is based.)</p>
+<p>Note that cloud CI providers like Travis-CI and Appveyor introduce a great deal
+of noise into the benchmarking process. For example, unpredictable load on the
+physical hosts of their build VM's. Benchmarks measured on such services tend
+to be unreliable, so you should be skeptical of the results. In particular,
+benchmarks that detect performance regressions should not cause the build to
+fail, and apparent performance regressions should be verified manually before
+rejecting a pull request.</p>
+<a class="header" href="print.html#cargo-bench------verbose-panics" id="cargo-bench------verbose-panics"><h3><code>cargo bench -- --verbose</code> Panics</h3></a>
+<p>This occurs because the <code>libtest</code> benchmark harness implicitly added to your
+crate is executing before the Criterion.rs benchmarks, and it panics when
+presented with a command-line argument it doesn't expect. There are two ways to
+work around this at present:</p>
+<p>You could run only your Criterion benchmark, like so:</p>
+<p><code>cargo bench --bench my_benchmark -- --verbose</code></p>
+<p>Note that <code>my_benchmark</code> here corresponds to the name of your benchmark in your
+<code>Cargo.toml</code> file.</p>
+<p>Another option is to disable benchmarks for your lib or app crate. For example,
+for library crates, you could add this to your <code>Cargo.toml</code> file:</p>
+<pre><code class="language-toml">[lib]
+bench = false
+</code></pre>
+<p>Of course, this only works if you define all of your benchmarks in the
+<code>benches</code> directory.</p>
+<p>See <a href="https://github.com/rust-lang/rust/issues/47241">Rust Issue #47241</a> for
+more details.</p>
+<a class="header" href="print.html#how-should-i-benchmark-small-functions" id="how-should-i-benchmark-small-functions"><h3>How Should I Benchmark Small Functions?</h3></a>
+<p>Exactly the same way as you would benchmark any other function.</p>
+<p>It is sometimes suggested that benchmarks of small (nanosecond-scale) functions should iterate the
+function to be benchmarked many times internally to reduce the impact of measurement overhead.
+This is <em>not</em> required with Criterion.rs, and it is not recommended.</p>
+<p>To see this, consider the following benchmark:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn compare_small(c: &amp;mut Criterion) {
+    use criterion::black_box;
+    use criterion::ParameterizedBenchmark;
+
+    c.bench(
+        &quot;small&quot;,
+        ParameterizedBenchmark::new(&quot;unlooped&quot;, |b, i| b.iter(|| i + 10), vec![10])
+            .with_function(&quot;looped&quot;, |b, i| b.iter(|| {
+                for _ in 0..10000 {
+                    black_box(i + 10);
+                }
+            }))
+    );
+}
+#}</code></pre></pre>
+<p>This benchmark simply adds two numbers - just about the smallest function that could be performed.
+On my computer, this produces the following output:</p>
+<pre><code>small/unlooped          time:   [270.00 ps 270.78 ps 271.56 ps]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high severe
+small/looped            time:   [2.7051 us 2.7142 us 2.7238 us]
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+</code></pre>
+<p>2.714 microseconds/10000 gives 271.4 picoseconds, or pretty much the same
+result. Interestingly, this is slightly more than one cycle of my 4th-gen Core
+i7's maximum clock frequency of 4.4 GHz, which shows how good the pipelining is
+on modern CPU's. Regardless, Criterion.rs is able to accurately measure
+functions all the way down to single instructions. See the <a href="./analysis.md">Analysis
+Process</a> page for more details on how Criterion.rs performs its
+measurements.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if (getComputedStyle(document.querySelector(".fa")).fontFamily !== "FontAwesome") {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_FontAwesome/css/font-awesome.css';
+                document.head.insertBefore(link, document.head.firstChild)
+            }
+        </script>
+
+        
+
+        
+
+        
+
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                window.print();
+            })
+        </script>
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

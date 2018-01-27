@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Properties` struct in crate `criterion_plot`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Properties">
+
+    <title>criterion_plot::axis::Properties - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Properties</p><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.hide">hide</a><a href="#method.show">show</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Configure%3CGrid%3E">Configure&lt;Grid&gt;</a><a href="#impl-Set%3CLabel%3E">Set&lt;Label&gt;</a><a href="#impl-Set%3CRange%3E">Set&lt;Range&gt;</a><a href="#impl-Set%3CScale%3E">Set&lt;Scale&gt;</a><a href="#impl-Set%3CScaleFactor%3E">Set&lt;ScaleFactor&gt;</a><a href="#impl-Set%3CTicLabels%3CP%2C%20L%3E%3E">Set&lt;TicLabels&lt;P, L&gt;&gt;</a></div></div><p class='location'><a href='../index.html'>criterion_plot</a>::<wbr><a href='index.html'>axis</a></p><script>window.sidebarCurrent = {name: 'Properties', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>criterion_plot</a>::<wbr><a href='index.html'>axis</a>::<wbr><a class="struct" href=''>Properties</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/criterion_plot/axis.rs.html#12-20' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Properties { /* fields omitted */ }</pre><div class='docblock'><p>Properties of the coordinate axes</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#36-52' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.hide' class="method"><span id='hide.v' class='invisible'><code>pub fn <a href='#method.hide' class='fnname'>hide</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#40-43' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Hides the axis</p>
+
+<p><strong>Note</strong> The <code>TopX</code> and <code>RightY</code> axes are hidden by default</p>
+</div><h4 id='method.show' class="method"><span id='show.v' class='invisible'><code>pub fn <a href='#method.show' class='fnname'>show</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#48-51' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Makes the axis visible</p>
+
+<p><strong>Note</strong> The <code>BottomX</code> and <code>LeftY</code> axes are visible by default</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#11' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#11' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Configure%3CGrid%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../criterion_plot/traits/trait.Configure.html" title="trait criterion_plot::traits::Configure">Configure</a>&lt;<a class="enum" href="../../criterion_plot/enum.Grid.html" title="enum criterion_plot::Grid">Grid</a>&gt; for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl-Configure%3CGrid%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#54-72' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Properties' class="type"><span id='Properties.t' class='invisible'><code>type <a href='../../criterion_plot/traits/trait.Configure.html#associatedtype.Properties' class="type">Properties</a> = <a class="struct" href="../../criterion_plot/grid/struct.Properties.html" title="struct criterion_plot::grid::Properties">Properties</a></code></span></h4>
+<div class='docblock'><p>The properties of what&#39;s being configured</p>
+</div><h4 id='method.configure' class="method"><span id='configure.v' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Configure.html#tymethod.configure' class='fnname'>configure</a>&lt;F&gt;(&amp;mut self, grid: <a class="enum" href="../../criterion_plot/enum.Grid.html" title="enum criterion_plot::Grid">Grid</a>, configure: F) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(&amp;mut <a class="struct" href="../../criterion_plot/grid/struct.Properties.html" title="struct criterion_plot::grid::Properties">Properties</a>) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/grid/struct.Properties.html" title="struct criterion_plot::grid::Properties">Properties</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#58-71' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Configures the gridlines</p>
+</div></div><h3 id='impl-Set%3CLabel%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../criterion_plot/traits/trait.Set.html" title="trait criterion_plot::traits::Set">Set</a>&lt;<a class="struct" href="../../criterion_plot/struct.Label.html" title="struct criterion_plot::Label">Label</a>&gt; for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl-Set%3CLabel%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#74-80' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set' class="method"><span id='set.v' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Set.html#tymethod.set' class='fnname'>set</a>(&amp;mut self, label: <a class="struct" href="../../criterion_plot/struct.Label.html" title="struct criterion_plot::Label">Label</a>) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#76-79' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attaches a label to the axis</p>
+</div></div><h3 id='impl-Set%3CRange%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../criterion_plot/traits/trait.Set.html" title="trait criterion_plot::traits::Set">Set</a>&lt;<a class="enum" href="../../criterion_plot/enum.Range.html" title="enum criterion_plot::Range">Range</a>&gt; for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl-Set%3CRange%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#82-96' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set-1' class="method"><span id='set.v-1' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Set.html#tymethod.set' class='fnname'>set</a>(&amp;mut self, range: <a class="enum" href="../../criterion_plot/enum.Range.html" title="enum criterion_plot::Range">Range</a>) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#86-95' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the range of the axis that will be shown</p>
+
+<p><strong>Note</strong> All axes are auto-scaled by default</p>
+</div></div><h3 id='impl-Set%3CScale%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../criterion_plot/traits/trait.Set.html" title="trait criterion_plot::traits::Set">Set</a>&lt;<a class="enum" href="../../criterion_plot/enum.Scale.html" title="enum criterion_plot::Scale">Scale</a>&gt; for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl-Set%3CScale%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#98-112' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set-2' class="method"><span id='set.v-2' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Set.html#tymethod.set' class='fnname'>set</a>(&amp;mut self, scale: <a class="enum" href="../../criterion_plot/enum.Scale.html" title="enum criterion_plot::Scale">Scale</a>) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#102-111' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Sets the scale of the axis</p>
+
+<p><strong>Note</strong> All axes use a linear scale by default</p>
+</div></div><h3 id='impl-Set%3CScaleFactor%3E' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../criterion_plot/traits/trait.Set.html" title="trait criterion_plot::traits::Set">Set</a>&lt;<a class="struct" href="../../criterion_plot/struct.ScaleFactor.html" title="struct criterion_plot::ScaleFactor">ScaleFactor</a>&gt; for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code><a href='#impl-Set%3CScaleFactor%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#114-126' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set-3' class="method"><span id='set.v-3' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Set.html#tymethod.set' class='fnname'>set</a>(&amp;mut self, factor: <a class="struct" href="../../criterion_plot/struct.ScaleFactor.html" title="struct criterion_plot::ScaleFactor">ScaleFactor</a>) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#121-125' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Changes the <em>scale factor</em> of the axis.</p>
+
+<p>All the data plotted against this axis will have its corresponding coordinate scaled with
+this factor before being plotted.</p>
+
+<p><strong>Note</strong> The default scale factor is <code>1</code>.</p>
+</div></div><h3 id='impl-Set%3CTicLabels%3CP%2C%20L%3E%3E' class='impl'><span class='in-band'><code>impl&lt;P, L&gt; <a class="trait" href="../../criterion_plot/traits/trait.Set.html" title="trait criterion_plot::traits::Set">Set</a>&lt;<a class="struct" href="../../criterion_plot/struct.TicLabels.html" title="struct criterion_plot::TicLabels">TicLabels</a>&lt;P, L&gt;&gt; for <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;L: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;L::<a class="type" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item" title="type core::iter::traits::IntoIterator::Item">Item</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;P::<a class="type" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item" title="type core::iter::traits::IntoIterator::Item">Item</a>: <a class="trait" href="../../criterion_plot/traits/trait.Data.html" title="trait criterion_plot::traits::Data">Data</a>,&nbsp;</span></code><a href='#impl-Set%3CTicLabels%3CP%2C%20L%3E%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#128-153' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set-4' class="method"><span id='set.v-4' class='invisible'><code>fn <a href='../../criterion_plot/traits/trait.Set.html#tymethod.set' class='fnname'>set</a>(&amp;mut self, tics: <a class="struct" href="../../criterion_plot/struct.TicLabels.html" title="struct criterion_plot::TicLabels">TicLabels</a>&lt;P, L&gt;) -&gt; &amp;mut <a class="struct" href="../../criterion_plot/axis/struct.Properties.html" title="struct criterion_plot::axis::Properties">Properties</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/criterion_plot/axis.rs.html#136-152' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attaches labels to the tics of an axis</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "criterion_plot";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

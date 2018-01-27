@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Getting Started - Criterion.rs Documentation</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="User Guide and Other Prose Documentation For Criterion.rs">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme;
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            document.querySelector('html').classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="criterion_rs.html"><strong aria-hidden="true">1.</strong> Criterion.rs</a></li><li><ol class="section"><li><a href="getting_started.html" class="active"><strong aria-hidden="true">1.1.</strong> Getting Started</a></li></ol></li><li><a href="user_guide/user_guide.html"><strong aria-hidden="true">2.</strong> User Guide</a></li><li><ol class="section"><li><a href="user_guide/migrating_from_libtest.html"><strong aria-hidden="true">2.1.</strong> Migrating from libtest</a></li><li><a href="user_guide/command_line.html"><strong aria-hidden="true">2.2.</strong> Command-Line Output</a></li><li><a href="user_guide/plots_and_graphs.html"><strong aria-hidden="true">2.3.</strong> Plots &amp; Graphs</a></li><li><a href="user_guide/benchmarking_with_inputs.html"><strong aria-hidden="true">2.4.</strong> Benchmarking With Inputs</a></li><li><a href="user_guide/comparing_functions.html"><strong aria-hidden="true">2.5.</strong> Comparing Functions</a></li><li><a href="user_guide/external_programs.html"><strong aria-hidden="true">2.6.</strong> Benchmarking External Programs</a></li></ol></li><li><a href="analysis.html"><strong aria-hidden="true">3.</strong> Analysis Process</a></li><li><a href="faq.html"><strong aria-hidden="true">4.</strong> Frequently Asked Questions</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="submenu">
+                                <li><button class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li><button class="theme" id="rust">Rust</button></li>
+                                <li><button class="theme" id="coal">Coal</button></li>
+                                <li><button class="theme" id="navy">Navy</button></li>
+                                <li><button class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                        </div>
+
+                        <h1 class="menu-title">Criterion.rs Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="getting_started.html#getting-started" id="getting-started"><h1>Getting Started</h1></a>
+<a class="header" href="getting_started.html#step-1---add-dependency-to-cargotoml" id="step-1---add-dependency-to-cargotoml"><h3>Step 1 - Add Dependency to cargo.toml</h3></a>
+<p>To enable Criterion.rs benchmarks, add the following to your <code>cargo.toml</code> file:</p>
+<pre><code class="language-toml">[dev-dependencies]
+criterion = &quot;0.1.2&quot;
+
+[[bench]]
+name = &quot;my_benchmark&quot;
+harness = false
+</code></pre>
+<p>This adds a development dependency on Criterion.rs, and declares a benchmark called <code>my_benchmark</code> without the standard benchmarking harness. It's important to disable the standard benchmark harness, because we'll later add our own and we don't want them to conflict.</p>
+<a class="header" href="getting_started.html#step-2---add-benchmark" id="step-2---add-benchmark"><h3>Step 2 - Add Benchmark</h3></a>
+<p>As an example, we'll benchmark an implementation of the Fibonacci function. Create a benchmark file at <code>$PROJECT/benches/my_benchmark.rs</code> with the following contents (see the Details section below for an explanation of this code):</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro_use]
+extern crate criterion;
+
+use criterion::Criterion;
+
+fn fibonacci(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci(n-1) + fibonacci(n-2),
+    }
+}
+
+fn criterion_benchmark(c: &amp;mut Criterion) {
+    c.bench_function(&quot;fib 20&quot;, |b| b.iter(|| fibonacci(20)));
+}
+
+criterion_group!(benches, criterion_benchmark);
+criterion_main!(benches);
+#}</code></pre></pre>
+<a class="header" href="getting_started.html#step-3---run-benchmark" id="step-3---run-benchmark"><h3>Step 3 - Run Benchmark</h3></a>
+<p>To run this benchmark, use the following command:</p>
+<p><code>cargo bench</code></p>
+<p>You should see output similar to this:</p>
+<pre><code>     Running target/release/deps/example-423eedc43b2b3a93
+Benchmarking fib 20
+Benchmarking fib 20: Warming up for 3.0000 s
+Benchmarking fib 20: Collecting 100 samples in estimated 5.0658 s (188100 iterations)
+Benchmarking fib 20: Analyzing
+fib 20                  time:   [26.029 us 26.251 us 26.505 us]
+Found 11 outliers among 99 measurements (11.11%)
+  6 (6.06%) high mild
+  5 (5.05%) high severe
+slope  [26.029 us 26.505 us] R^2            [0.8745662 0.8728027]
+mean   [26.106 us 26.561 us] std. dev.      [808.98 ns 1.4722 us]
+median [25.733 us 25.988 us] med. abs. dev. [234.09 ns 544.07 ns]
+</code></pre>
+<a class="header" href="getting_started.html#details" id="details"><h3>Details</h3></a>
+<p>Let's go back and walk through that benchmark code in more detail.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro use]
+extern crate criterion;
+
+use criterion::Criterion;
+#}</code></pre></pre>
+<p>First, we declare the criterion crate and import the <a href="http://japaric.github.io/criterion.rs/criterion/struct.Criterion.html">Criterion type</a>. Criterion is the main type for the Criterion.rs library. It provides methods to configure and define groups of benchmarks.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn fibonacci(n: u64) -&gt; u64 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        n =&gt; fibonacci(n-1) + fibonacci(n-2),
+    }
+}
+#}</code></pre></pre>
+<p>Second, we define the function to benchmark. In normal usage, this would be imported from elsewhere in your crate, but for simplicity we'll just define it right here.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn criterion_benchmark(c: &amp;mut Criterion) {
+#}</code></pre></pre>
+<p>Here we create a function to contain our benchmark code. The name of the benchmark function doesn't matter, but it should be clear and understandable.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    c.bench_function(&quot;fib 20&quot;, |b| b.iter(|| fibonacci(20)));
+}
+#}</code></pre></pre>
+<p>This is where the real work happens. The <code>bench_function</code> method defines a benchmark with a name and a closure. The name should be unique among all of the benchmarks for your project. The closure must accept one argument, a <a href="http://japaric.github.io/criterion.rs/criterion/struct.Bencher.html">Bencher</a>. The bencher performs the benchmark - in this case, it simply calls our <code>fibonacci</code> function in a loop. There are a number of other benchmark functions, including the option to benchmark with arguments, to benchmark external programs and to compare the performance of two functions. See the API documentation for details on all of the different benchmarking options.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+criterion_group!(benches, criterion_benchmark);
+criterion_main!(benches);
+#}</code></pre></pre>
+<p>Here we invoke the <code>criterion_group!</code> <a href="http://japaric.github.io/criterion.rs/criterion/macro.criterion_group.html">(link)</a> macro to generate a benchmark group called benches, containing the <code>criterion_benchmark</code> function defined earlier. Finally, we invoke the <code>criterion_main!</code> <a href="http://japaric.github.io/criterion.rs/criterion/macro.criterion_main.html">(link)</a> macro to generate a main function which executes the <code>benches</code> group. See the API documentation for more information on these macros.</p>
+<a class="header" href="getting_started.html#step-4---optimize" id="step-4---optimize"><h3>Step 4 - Optimize</h3></a>
+<p>This fibonacci function is quite inefficient. We can do better:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn fibonacci(n: u64) -&gt; u64 {
+    let mut a = 0u64;
+    let mut b = 1u64;
+    let mut c = 0u64;
+
+    if n == 0 {
+        return 0
+    }
+
+    for _ in 0..(n+1) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+#}</code></pre></pre>
+<p>Running the benchmark now produces output like this:</p>
+<pre><code>     Running target/release/deps/example-423eedc43b2b3a93
+Benchmarking fib 20
+Benchmarking fib 20: Warming up for 3.0000 s
+Benchmarking fib 20: Collecting 100 samples in estimated 5.0000 s (13548862800 iterations)
+Benchmarking fib 20: Analyzing
+fib 20                  time:   [353.59 ps 356.19 ps 359.07 ps]
+                        change: [-99.999% -99.999% -99.999%] (p = 0.00 &lt; 0.05)
+                        Performance has improved.
+Found 6 outliers among 99 measurements (6.06%)
+  4 (4.04%) high mild
+  2 (2.02%) high severe
+slope  [353.59 ps 359.07 ps] R^2            [0.8734356 0.8722124]
+mean   [356.57 ps 362.74 ps] std. dev.      [10.672 ps 20.419 ps]
+median [351.57 ps 355.85 ps] med. abs. dev. [4.6479 ps 10.059 ps]
+</code></pre>
+<p>As you can see, Criterion is statistically confident that our optimization has made an improvement. If we introduce a performance regression, Criterion will instead print a message indicating this.</p>
+<a class="header" href="getting_started.html#known-limitations" id="known-limitations"><h3>Known Limitations</h3></a>
+<p>There are currently a number of limitations to the use of Criterion.rs relative to the standard benchmark harness.</p>
+<p>First, it is necessary for Criterion.rs to provide its own <code>main</code> function using the <code>criterion_main</code> macro. This means that it's not currently possible to include benchmarks in the <code>src/</code> directory.</p>
+<p>Second, Criterion.rs provides a stable-compatible replacement for the <code>black_box</code> function provided by the standard test crate. This replacement is not as reliable as the official one, and it may allow dead-code-elimination to affect the benchmarks in some circumstances. If you're using a Nightly build of Rust, you can add the <code>real_blackbox</code> feature to your dependency on Criterion.rs to use the standard <code>black_box</code> function instead.</p>
+<p>Example:</p>
+<pre><code class="language-toml">criterion = { version = '...', features=['real_blackbox'] }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="criterion_rs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="user_guide/user_guide.html" class="mobile-nav-chapters next" title="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="criterion_rs.html" class="nav-chapters previous" title="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="user_guide/user_guide.html" class="nav-chapters next" title="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if (getComputedStyle(document.querySelector(".fa")).fontFamily !== "FontAwesome") {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_FontAwesome/css/font-awesome.css';
+                document.head.insertBefore(link, document.head.firstChild)
+            }
+        </script>
+
+        
+
+        
+
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>
